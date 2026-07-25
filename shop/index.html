@@ -159,11 +159,10 @@ let selectedSize='M'; let currentCard=null;
 const saveCart=()=>localStorage.setItem('crescita_cart',JSON.stringify(cart));
 const updateCount=()=>document.getElementById('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0);
 updateCount();
+
 function openProduct(card){
   currentCard=card;
-  dTitle.textContent='Product';
-  dName.textContent=card.dataset.name;
-  dPrice.textContent=card.dataset.price;
+  dTitle.textContent='Product'; dName.textContent=card.dataset.name; dPrice.textContent=card.dataset.price;
   const src=card.dataset.img; if(src){ dImg.src=src; dImg.style.display='block'; }
   const isWomens=card.dataset.name.toLowerCase().includes('womens');
   const opts=isWomens?['XS','S','M','L']:['S','M','L','XL','XXL'];
@@ -179,48 +178,64 @@ function openProduct(card){
   drawer.classList.add('open'); overlay.classList.add('open');
 }
 function openCart(){
-  dTitle.textContent='Your Cart';
-  productView.style.display='none'; cartView.style.display='flex';
-  renderCart();
+  dTitle.textContent='Your Cart'; productView.style.display='none'; cartView.style.display='flex'; renderCart();
   drawer.classList.add('open'); overlay.classList.add('open');
 }
 function renderCart(){
   if(cart.length===0){ cartItemsEl.innerHTML='<div style="font:400 13px Montserrat;color:#6b6b6b">Cart is empty</div>'; cartTotalEl.textContent=''; return; }
   let total=0; let html='';
   cart.forEach((item,idx)=>{
-    const priceNum=parseInt(item.price.replace(/[^0-9]/g,''))||0;
-    total+=priceNum*item.qty;
+    const priceNum=parseInt(item.price.replace(/[^0-9]/g,''))||0; total+=priceNum*item.qty;
     html+=`<div style="display:flex;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #eee"><img src="${item.img}" style="width:60px;height:75px;object-fit:cover;border:1px solid #eee"><div style="flex:1"><div style="font:600 11px Montserrat;text-transform:uppercase">${item.name}</div><div style="font:400 11px Montserrat;color:#6b6b6b;margin-top:2px">Size: ${item.size} | Qty: ${item.qty}</div><div style="font:600 12px Montserrat;margin-top:4px">${item.price}</div></div><button onclick="removeItem(${idx})" style="background:none;border:none;cursor:pointer;font-size:16px">✕</button></div>`;
   });
-  cartItemsEl.innerHTML=html;
-  cartTotalEl.textContent='Total: R '+total.toLocaleString();
+  cartItemsEl.innerHTML=html; cartTotalEl.textContent='Total: R '+total.toLocaleString();
 }
 window.removeItem=(idx)=>{ cart.splice(idx,1); saveCart(); updateCount(); renderCart(); }
 function closeD(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
 document.querySelectorAll('.card').forEach(card=>{
+  const isWomens=card.dataset.name.toLowerCase().includes('womens');
+  const opts=isWomens?['XS','S','M','L']:['S','M','L','XL','XXL'];
+  let selSize=null;
+
+  if(!card.querySelector('.quick-sizes')){
+    const sizeWrap=document.createElement('div'); sizeWrap.className='quick-sizes';
+    opts.forEach(s=>{
+      const b=document.createElement('div'); b.className='qs'; b.textContent=s;
+      b.onclick=(e)=>{
+        e.stopPropagation(); selSize=s;
+        [...sizeWrap.children].forEach(c=>c.classList.remove('active')); b.classList.add('active');
+      };
+      sizeWrap.appendChild(b);
+    });
+    card.appendChild(sizeWrap);
+  }
   if(!card.querySelector('.add-cart-quiet')){
-    const btn=document.createElement('button');
-    btn.className='add-cart-quiet';
-    btn.textContent='Add to Cart';
+    const btn=document.createElement('button'); btn.className='add-cart-quiet'; btn.textContent='Add to Cart';
     btn.addEventListener('click',(e)=>{
       e.stopPropagation();
-      const existing=cart.find(i=>i.name===card.dataset.name && i.size==='M');
-      if(existing) existing.qty++;
-      else cart.push({name:card.dataset.name, price:card.dataset.price, img:card.dataset.img, size:'M', qty:1});
-      saveCart(); updateCount();
-      btn.textContent='Added ✓'; btn.classList.add('added');
-      setTimeout(()=>{btn.textContent='Add to Cart';btn.classList.remove('added')},1200);
+      const sizeWrap=card.querySelector('.quick-sizes');
+      if(!selSize){
+        sizeWrap.classList.add('show');
+        btn.textContent='Choose Size ↑';
+        setTimeout(()=>{if(!selSize) btn.textContent='Add to Cart'},1500);
+        return;
+      }
+      const existing=cart.find(i=>i.name===card.dataset.name && i.size===selSize);
+      if(existing) existing.qty++; else cart.push({name:card.dataset.name, price:card.dataset.price, img:card.dataset.img, size:selSize, qty:1});
+      saveCart(); updateCount(); btn.textContent=`Added ${selSize} ✓`; btn.classList.add('added');
+      setTimeout(()=>{btn.textContent='Add to Cart';btn.classList.remove('added'); sizeWrap.classList.remove('show'); selSize=null; [...sizeWrap.children].forEach(c=>c.classList.remove('active'))},1500);
     });
     card.appendChild(btn);
   }
   card.addEventListener('click',()=>openProduct(card));
 });
+
 document.getElementById('close').onclick=closeD; overlay.onclick=closeD;
 document.getElementById('add').onclick=()=>{
   if(!currentCard) return;
   const existing=cart.find(i=>i.name===currentCard.dataset.name && i.size===selectedSize);
-  if(existing) existing.qty++;
-  else cart.push({name:currentCard.dataset.name, price:currentCard.dataset.price, img:currentCard.dataset.img, size:selectedSize, qty:1});
+  if(existing) existing.qty++; else cart.push({name:currentCard.dataset.name, price:currentCard.dataset.price, img:currentCard.dataset.img, size:selectedSize, qty:1});
   saveCart(); updateCount(); closeD();
 };
 document.getElementById('cartBtn').onclick=openCart;
@@ -229,10 +244,7 @@ document.getElementById('waCheckout').onclick=()=>{
   if(cart.length===0) return;
   let msg='Hi CRESCITA, I want to order:%0A';
   let total=0;
-  cart.forEach((it,i)=>{
-    const p=parseInt(it.price.replace(/[^0-9]/g,''))||0; total+=p*it.qty;
-    msg+=`${i+1}. ${it.name} (Size: ${it.size}) x${it.qty} - ${it.price}%0A`;
-  });
+  cart.forEach((it,i)=>{ const p=parseInt(it.price.replace(/[^0-9]/g,''))||0; total+=p*it.qty; msg+=`${i+1}. ${it.name} (Size: ${it.size}) x${it.qty} - ${it.price}%0A`; });
   msg+=`%0ATotal: R${total}%0A%0APlease confirm availability.`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
 };
