@@ -128,7 +128,14 @@
 </aside>
 
 <footer class="footer"><div class="foot-wrap"><div><div class="brand">CRESCITA</div><div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div></div><div><h4>Shop</h4><a href="#mens-sets">Mens Sets</a><a href="#womens-sets">Womens Sets</a><a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a></div><div><h4>Follow</h4><a href="#">Instagram</a><a href="#">TikTok</a></div></div><div class="bottom"><div>© 2026 CRESCITA</div><div>Growth / Faith / Purpose / Grace</div></div></footer>
-
+.footer{padding:80px 24px 40px;border-top:1px solid var(--line);background:#fff}
+.footer .foot-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px}
+.footer .brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
+.footer .muted{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
+.footer h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.footer a{display:block;font-size:14px;margin:8px 0}
+.footer .bottom{max-width:1100px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+@media(max-width:600px){.footer .foot-wrap{grid-template-columns:1fr}}
 <script>
 const WA_NUMBER = "27646554337";
 const filters=document.querySelectorAll('.f');
