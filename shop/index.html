@@ -198,6 +198,7 @@ document.querySelectorAll('.card').forEach(card=>{
   const opts=isWomens?['XS','S','M','L']:['S','M','L','XL','XXL'];
   let selSize=null;
 
+    // 1. create sizes row (hidden)
   if(!card.querySelector('.quick-sizes')){
     const sizeWrap=document.createElement('div'); sizeWrap.className='quick-sizes';
     opts.forEach(s=>{
@@ -210,25 +211,9 @@ document.querySelectorAll('.card').forEach(card=>{
     });
     card.appendChild(sizeWrap);
   }
+  // 2. create button under it
   if(!card.querySelector('.add-cart-quiet')){
     const btn=document.createElement('button'); btn.className='add-cart-quiet'; btn.textContent='Add to Cart';
-    btn.addEventListener('click',(e)=>{
-      e.stopPropagation();
-      const sizeWrap=card.querySelector('.quick-sizes');
-      if(!selSize){
-        sizeWrap.classList.add('show');
-        btn.textContent='Choose Size ↑';
-        setTimeout(()=>{if(!selSize) btn.textContent='Add to Cart'},1500);
-        return;
-      }
-      const existing=cart.find(i=>i.name===card.dataset.name && i.size===selSize);
-      if(existing) existing.qty++; else cart.push({name:card.dataset.name, price:card.dataset.price, img:card.dataset.img, size:selSize, qty:1});
-      saveCart(); updateCount(); btn.textContent=`Added ${selSize} ✓`; btn.classList.add('added');
-      setTimeout(()=>{btn.textContent='Add to Cart';btn.classList.remove('added'); sizeWrap.classList.remove('show'); selSize=null; [...sizeWrap.children].forEach(c=>c.classList.remove('active'))},1500);
-    });
-    card.appendChild(btn);
-  }
-  card.addEventListener('click',()=>openProduct(card));
 });
 
 document.getElementById('close').onclick=closeD; overlay.onclick=closeD;
