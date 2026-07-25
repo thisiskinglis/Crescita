@@ -10,54 +10,57 @@
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{background:var(--bg);color:var(--fg);font-family:"Montserrat",sans-serif;scroll-behavior:smooth}
     a{color:inherit;text-decoration:none}
-   .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 32px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-   .logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:20px;text-transform:uppercase}
-   .nav-cta{font-size:11px;text-transform:uppercase;letter-spacing:.2em;font-weight:500;border:1px solid #000;padding:10px 16px;border-radius:999px;cursor:pointer;background:#fff;transition:.2s}
-   .nav-cta:hover{background:#000;color:#fff}
-   .shop-head{padding:130px 32px 30px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;border-bottom:1px solid var(--line)}
-   .shop-head h1{font-family:'Orbitron',sans-serif;font-size:clamp(30px,5vw,52px);line-height:.9;letter-spacing:.04em;text-transform:uppercase}
-   .meta{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);line-height:1.7}
-   .sticky-filters{position:sticky;top:71px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 32px;display:flex;gap:22px;overflow:auto;scrollbar-width:none}
-   .sticky-filters::-webkit-scrollbar{display:none}
-   .f{font:600 10px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:16px 0;border-bottom:1.5px solid transparent;cursor:pointer;white-space:nowrap}
-   .f.active{color:#000;border-bottom-color:#000}
-   .wrap{max-width:1300px;margin:0 auto;padding:0 32px 100px}
-   .section{padding:56px 0 20px;border-bottom:1px solid var(--line)}
-   .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;flex-wrap:wrap;gap:10px}
-   .section-head h2{font:700 14px Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase}
-   .section-head span{font:400 11px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-   .card{cursor:pointer}
-   .img-wrap{position:relative;aspect-ratio:4/5;background:var(--card);border:1px solid var(--line);overflow:hidden}
-   .img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform.5s}
-   .card:hover img{transform:scale(1.04)}
-   .badge{position:absolute;top:10px;left:10px;font:700 9px Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#fff;border:1px solid var(--line)}
-   .badge.pink{background:#ffe4ec;border-color:#ffb6c9}
-   .badge.black{background:#000;color:#fff;border-color:#000}
-   .quick{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.92);border:1px solid #000;text-align:center;padding:11px;font:700 10px Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.25s}
-   .card:hover.quick{opacity:1;transform:translateY(0)}
-   .info{padding:12px 0 0;display:flex;justify-content:space-between;gap:12px}
-   .p-name{font:600 11px Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase}
-   .p-col{font:400 11px Montserrat,sans-serif;color:var(--muted);margin-top:2px}
-   .p-price{font:600 13px Montserrat,sans-serif}
-   .drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:#fff;border-left:1px solid var(--line);z-index:100;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
-   .drawer.open{transform:translateX(0)}
-   .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90;opacity:0;pointer-events:none;transition:.3s}
-   .overlay.open{opacity:1;pointer-events:auto}
-   .footer{padding:80px 24px 40px;border-top:1px solid var(--line);background:#fff}
-   .footer.foot-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr.8fr.8fr;gap:40px}
-   .footer.brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
-   .footer.muted{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
-   .footer h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
-   .footer a{display:block;font-size:14px;margin:8px 0}
-   .footer.bottom{max-width:1100px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+  .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 32px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:20px;text-transform:uppercase}
+  .nav-cta{font-size:11px;text-transform:uppercase;letter-spacing:.2em;font-weight:500;border:1px solid #000;padding:10px 16px;border-radius:999px;cursor:pointer;background:#fff;transition:.2s}
+  .nav-cta:hover{background:#000;color:#fff}
+  .shop-head{padding:130px 32px 30px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;border-bottom:1px solid var(--line)}
+  .shop-head h1{font-family:'Orbitron',sans-serif;font-size:clamp(30px,5vw,52px);line-height:.9;letter-spacing:.04em;text-transform:uppercase}
+  .meta{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+  .sticky-filters{position:sticky;top:71px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 32px;display:flex;gap:22px;overflow:auto;scrollbar-width:none}
+  .sticky-filters::-webkit-scrollbar{display:none}
+  .f{font:600 10px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:16px 0;border-bottom:1.5px solid transparent;cursor:pointer;white-space:nowrap}
+  .f.active{color:#000;border-bottom-color:#000}
+  .wrap{max-width:1300px;margin:0 auto;padding:0 32px 100px}
+  .section{padding:56px 0 20px;border-bottom:1px solid var(--line)}
+  .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+  .section-head h2{font:700 14px Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase}
+  .section-head span{font:400 11px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{cursor:pointer}
+  .img-wrap{position:relative;aspect-ratio:4/5;background:var(--card);border:1px solid var(--line);overflow:hidden}
+  .img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform.5s}
+  .card:hover img{transform:scale(1.04)}
+  .badge{position:absolute;top:10px;left:10px;font:700 9px Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#fff;border:1px solid var(--line)}
+  .badge.pink{background:#ffe4ec;border-color:#ffb6c9}
+  .badge.black{background:#000;color:#fff;border-color:#000}
+  .quick{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.92);border:1px solid #000;text-align:center;padding:11px;font:700 10px Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.25s}
+  .card:hover.quick{opacity:1;transform:translateY(0)}
+  .info{padding:12px 0 0;display:flex;justify-content:space-between;gap:12px}
+  .p-name{font:600 11px Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+  .p-col{font:400 11px Montserrat,sans-serif;color:var(--muted);margin-top:2px}
+  .p-price{font:600 13px Montserrat,sans-serif}
+  .quick-sizes{display:none;flex-direction:row;gap:6px;margin:12px 0 10px;flex-wrap:wrap}
+  .quick-sizes.show{display:flex}
+  .qs{min-width:34px;height:34px;padding:0 8px;border:1px solid #000;display:grid;place-items:center;font:600 10px Montserrat;letter-spacing:.04em;cursor:pointer;background:#fff;transition:.15s}
+  .qs:hover{background:#f5f5f5}
+  .qs.active{background:#000;color:#fff;border-color:#000}
+  .add-cart-quiet{margin-top:0;width:100%;background:#fff;border:1.5px solid #000;color:#000;padding:11px;font:700 10px Montserrat;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.2s}
+  .add-cart-quiet:hover{background:#000;color:#fff}
+  .add-cart-quiet.added{background:#000;color:#fff}
+  .drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:#fff;border-left:1px solid var(--line);z-index:100;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
+  .drawer.open{transform:translateX(0)}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90;opacity:0;pointer-events:none;transition:.3s}
+  .overlay.open{opacity:1;pointer-events:auto}
+  .footer{padding:80px 24px 40px;border-top:1px solid var(--line);background:#fff}
+  .footer.foot-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr.8fr.8fr;gap:40px}
+  .footer.brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
+  .footer.muted{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
+  .footer h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+  .footer a{display:block;font-size:14px;margin:8px 0}
+  .footer.bottom{max-width:1100px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
     @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.nav{padding:16px 18px}.shop-head{padding:100px 20px 24px}.sticky-filters{padding:0 20px;top:61px}.wrap{padding:0 20px 80px}}
     @media(max-width:600px){.grid{grid-template-columns:1fr}.footer.foot-wrap{grid-template-columns:1fr}}
-   .img-wrap{aspect-ratio:4/5!important;overflow:hidden!important;background:#e9e9e9!important}
-   .img-wrap img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 85%!important}
-   .add-cart-quiet{margin-top:10px;width:100%;background:#fff;border:1px solid #000;color:#000;padding:10px;font:600 10px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:.2s}
-   .add-cart-quiet:hover{background:#000;color:#fff}
-   .add-cart-quiet.added{background:#000;color:#fff}
   </style>
 </head>
 <body>
@@ -106,6 +109,20 @@
 <div class="card" data-name="Womens Faith Bottoms - White" data-price="R 1,750" data-img="../assets/womens-bottoms-white.png"><div class="img-wrap"><img src="../assets/womens-bottoms-white.png"><div class="quick">Quick View</div></div><div class="info"><div><div class="p-name">Faith Bottoms — Womens</div><div class="p-col">Off-White</div></div><div class="p-price">R 1,750</div></div></div>
 <div class="card" data-name="Womens Purpose Bottoms - Blue" data-price="R 1,750" data-img="../assets/womens-bottoms-blue.png"><div class="img-wrap"><img src="../assets/womens-bottoms-blue.png"><div class="quick">Quick View</div></div><div class="info"><div><div class="p-name">Purpose Bottoms — Womens</div><div class="p-col">Washed Blue</div></div><div class="p-price">R 1,750</div></div></div>
 </div></section>
+
+<!-- DROP 002 COMING SOON -->
+<section style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:80px 32px; background:#fff; text-align:center">
+  <div style="max-width:1300px;margin:0 auto">
+    <div style="font:700 10px Montserrat;letter-spacing:.3em;text-transform:uppercase;color:#6b6b6b;margin-bottom:16px">Next Chapter</div>
+    <h2 style="font-family:'Orbitron',sans-serif;font-size:clamp(32px,6vw,64px);line-height:.9;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px">DROP 002 —<br>COMING SOON</h2>
+    <p style="font:400 13px Montserrat;color:#6b6b6b;max-width:520px;margin:0 auto 40px;line-height:1.7">Growth continues. New colorways, new cuts. Be first to access — 50 pieces only.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto">
+      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="../assets/drop002-1.png" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="../assets/drop-002-2.png" style="width:100%;height:100%;object-fit:cover"></div>
+      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="../assets/drop-002-3.png" style="width:100%;height:100%;object-fit:cover"></div>
+    </div>
+  </div>
+</section>
 </main>
 
 <div class="overlay" id="overlay"></div>
@@ -128,14 +145,7 @@
 </aside>
 
 <footer class="footer"><div class="foot-wrap"><div><div class="brand">CRESCITA</div><div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div></div><div><h4>Shop</h4><a href="#mens-sets">Mens Sets</a><a href="#womens-sets">Womens Sets</a><a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a></div><div><h4>Follow</h4><a href="#">Instagram</a><a href="#">TikTok</a></div></div><div class="bottom"><div>© 2026 CRESCITA</div><div>Growth / Faith / Purpose / Grace</div></div></footer>
-.footer{padding:80px 24px 40px;border-top:1px solid var(--line);background:#fff}
-.footer .foot-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px}
-.footer .brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
-.footer .muted{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
-.footer h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
-.footer a{display:block;font-size:14px;margin:8px 0}
-.footer .bottom{max-width:1100px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
-@media(max-width:600px){.footer .foot-wrap{grid-template-columns:1fr}}
+
 <script>
 const WA_NUMBER = "27646554337";
 const filters=document.querySelectorAll('.f');
@@ -159,7 +169,6 @@ let selectedSize='M'; let currentCard=null;
 const saveCart=()=>localStorage.setItem('crescita_cart',JSON.stringify(cart));
 const updateCount=()=>document.getElementById('cartCount').textContent=cart.reduce((s,i)=>s+i.qty,0);
 updateCount();
-
 function openProduct(card){
   currentCard=card;
   dTitle.textContent='Product'; dName.textContent=card.dataset.name; dPrice.textContent=card.dataset.price;
@@ -192,20 +201,15 @@ function renderCart(){
 }
 window.removeItem=(idx)=>{ cart.splice(idx,1); saveCart(); updateCount(); renderCart(); }
 function closeD(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
-
 document.querySelectorAll('.card').forEach(card=>{
   const isWomens=card.dataset.name.toLowerCase().includes('womens');
   const opts=isWomens?['XS','S','M','L']:['S','M','L','XL','XXL'];
   let selSize=null;
-
   if(!card.querySelector('.quick-sizes')){
     const sizeWrap=document.createElement('div'); sizeWrap.className='quick-sizes';
     opts.forEach(s=>{
       const b=document.createElement('div'); b.className='qs'; b.textContent=s;
-      b.onclick=(e)=>{
-        e.stopPropagation(); selSize=s;
-        [...sizeWrap.children].forEach(c=>c.classList.remove('active')); b.classList.add('active');
-      };
+      b.onclick=(e)=>{ e.stopPropagation(); selSize=s; [...sizeWrap.children].forEach(c=>c.classList.remove('active')); b.classList.add('active'); };
       sizeWrap.appendChild(b);
     });
     card.appendChild(sizeWrap);
@@ -215,12 +219,7 @@ document.querySelectorAll('.card').forEach(card=>{
     btn.addEventListener('click',(e)=>{
       e.stopPropagation();
       const sizeWrap=card.querySelector('.quick-sizes');
-      if(!selSize){
-        sizeWrap.classList.add('show');
-        btn.textContent='Choose Size ↑';
-        setTimeout(()=>{if(!selSize) btn.textContent='Add to Cart'},1500);
-        return;
-      }
+      if(!selSize){ sizeWrap.classList.add('show'); btn.textContent='Choose Size ↑'; setTimeout(()=>{if(!selSize) btn.textContent='Add to Cart'},1500); return; }
       const existing=cart.find(i=>i.name===card.dataset.name && i.size===selSize);
       if(existing) existing.qty++; else cart.push({name:card.dataset.name, price:card.dataset.price, img:card.dataset.img, size:selSize, qty:1});
       saveCart(); updateCount(); btn.textContent=`Added ${selSize} ✓`; btn.classList.add('added');
@@ -230,7 +229,6 @@ document.querySelectorAll('.card').forEach(card=>{
   }
   card.addEventListener('click',()=>openProduct(card));
 });
-
 document.getElementById('close').onclick=closeD; overlay.onclick=closeD;
 document.getElementById('add').onclick=()=>{
   if(!currentCard) return;
@@ -242,8 +240,7 @@ document.getElementById('cartBtn').onclick=openCart;
 document.getElementById('clearCart').onclick=()=>{ cart=[]; saveCart(); updateCount(); renderCart(); };
 document.getElementById('waCheckout').onclick=()=>{
   if(cart.length===0) return;
-  let msg='Hi CRESCITA, I want to order:%0A';
-  let total=0;
+  let msg='Hi CRESCITA, I want to order:%0A'; let total=0;
   cart.forEach((it,i)=>{ const p=parseInt(it.price.replace(/[^0-9]/g,''))||0; total+=p*it.qty; msg+=`${i+1}. ${it.name} (Size: ${it.size}) x${it.qty} - ${it.price}%0A`; });
   msg+=`%0ATotal: R${total}%0A%0APlease confirm availability.`;
   window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
