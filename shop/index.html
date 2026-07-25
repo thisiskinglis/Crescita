@@ -288,6 +288,60 @@ document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>ope
 document.getElementById('close').onclick=closeD; overlay.onclick=closeD;
 document.getElementById('add').onclick=()=>{ cart++; document.getElementById('cartCount').textContent=cart; closeD(); }
 document.getElementById('cartBtn').onclick=()=>{ drawer.classList.add('open'); overlay.classList.add('open'); };
+  <script>
+const filters=document.querySelectorAll('.f');
+const sections=document.querySelectorAll('.section');
+filters.forEach(f=>{
+ f.addEventListener('click',()=>{
+   filters.forEach(x=>x.classList.remove('active')); f.classList.add('active');
+   const go=f.dataset.go;
+   if(go==='all'){ sections.forEach(s=>s.style.display='block'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+   sections.forEach(s=>{ s.style.display = (s.id===go) ? 'block' : 'none'; });
+   document.getElementById(go)?.scrollIntoView({behavior:'smooth'});
+ });
+});
+const drawer=document.getElementById('drawer'), overlay=document.getElementById('overlay');
+const dImg=document.getElementById('dImg'), dName=document.getElementById('dName'), dPrice=document.getElementById('dPrice');
+const sizesBox=document.getElementById('sizes');
+let cart=0;
+function openD(card){
+  dName.textContent=card.dataset.name;
+  dPrice.textContent=card.dataset.price;
+  const src=card.dataset.img; if(src){ dImg.src=src; dImg.style.display='block'; }
+  const isWomens=card.dataset.name.toLowerCase().includes('womens');
+  const opts=isWomens?['XS','S','M','L']:['S','M','L','XL','XXL'];
+  sizesBox.innerHTML=''; opts.forEach((s,i)=>{
+    const b=document.createElement('div'); b.textContent=s;
+    b.style.cssText='width:46px;height:46px;border:1.5px solid #000;display:grid;place-items:center;font:600 12px Montserrat;cursor:pointer';
+    if(i===1) {b.style.background='#000'; b.style.color='#fff';}
+    b.onclick=()=>{ [...sizesBox.children].forEach(c=>{c.style.background='#fff';c.style.color='#000'}); b.style.background='#000';b.style.color='#fff';}
+    sizesBox.appendChild(b);
+  });
+  drawer.classList.add('open'); overlay.classList.add('open');
+}
+function closeD(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+
+// auto-insert quiet button under each image
+document.querySelectorAll('.card').forEach(card=>{
+  if(!card.querySelector('.add-cart-quiet')){
+    const btn=document.createElement('button');
+    btn.className='add-cart-quiet';
+    btn.textContent='Add to Cart';
+    btn.addEventListener('click',(e)=>{
+      e.stopPropagation(); // don't open drawer
+      cart++; document.getElementById('cartCount').textContent=cart;
+      btn.textContent='Added ✓'; btn.classList.add('added');
+      setTimeout(()=>{btn.textContent='Add to Cart';btn.classList.remove('added')},1200);
+    });
+    card.appendChild(btn);
+  }
+  card.addEventListener('click',()=>openD(card));
+});
+
+document.getElementById('close').onclick=closeD; overlay.onclick=closeD;
+document.getElementById('add').onclick=()=>{ cart++; document.getElementById('cartCount').textContent=cart; closeD(); }
+document.getElementById('cartBtn').onclick=()=>{ drawer.classList.add('open'); overlay.classList.add('open'); };
+</script>
 </script>
 </body>
 </html>
