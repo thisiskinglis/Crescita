@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop Drop 001 — CRESCITA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#fff;--fg:#000;--muted:#6b6b6b;--line:#e5e5e5;--card:#f5f5f5}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--bg);color:var(--fg);font-family:"Montserrat",sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 32px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:20px;text-transform:uppercase}
+    .nav-cta{font-size:11px;text-transform:uppercase;letter-spacing:.2em;font-weight:500;border:1px solid #000;padding:10px 16px;border-radius:999px;cursor:pointer;background:#fff;transition:.2s}
+    .nav-cta:hover{background:#000;color:#fff}
+    .shop-head{padding:130px 32px 30px;max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;border-bottom:1px solid var(--line)}
+    .shop-head h1{font-family:'Orbitron',sans-serif;font-size:clamp(30px,5vw,52px);line-height:.9;letter-spacing:.04em;text-transform:uppercase}
+    .meta{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);line-height:1.7}
+    .sticky-filters{position:sticky;top:71px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:0 32px;display:flex;gap:22px;overflow:auto;scrollbar-width:none}
+    .sticky-filters::-webkit-scrollbar{display:none}
+    .f{font:600 10px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:16px 0;border-bottom:1.5px solid transparent;cursor:pointer;white-space:nowrap}
+    .f.active{color:#000;border-bottom-color:#000}
+    .wrap{max-width:1300px;margin:0 auto;padding:0 32px 100px}
+    .section{padding:56px 0 20px;border-bottom:1px solid var(--line)}
+    .section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;flex-wrap:wrap;gap:10px}
+    .section-head h2{font:700 14px Montserrat,sans-serif;letter-spacing:.22em;text-transform:uppercase}
+    .section-head span{font:400 11px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .card{cursor:pointer}
+    .img-wrap{position:relative;aspect-ratio:4/5;background:var(--card);border:1px solid var(--line);overflow:hidden}
+    .img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}
+    .card:hover img{transform:scale(1.04)}
+    .badge{position:absolute;top:10px;left:10px;font:700 9px Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:6px 8px;background:#fff;border:1px solid var(--line)}
+    .badge.pink{background:#ffe4ec;border-color:#ffb6c9}
+    .badge.black{background:#000;color:#fff;border-color:#000}
+    .quick{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.92);border:1px solid #000;text-align:center;padding:11px;font:700 10px Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.25s}
+    .card:hover .quick{opacity:1;transform:translateY(0)}
+    .info{padding:12px 0 0;display:flex;justify-content:space-between;gap:12px}
+    .p-name{font:600 11px Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+    .p-col{font:400 11px Montserrat,sans-serif;color:var(--muted);margin-top:2px}
+    .p-price{font:600 13px Montserrat,sans-serif}
+    .drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:92vw;background:#fff;border-left:1px solid var(--line);z-index:100;transform:translateX(100%);transition:.35s;display:flex;flex-direction:column}
+    .drawer.open{transform:translateX(0)}
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90;opacity:0;pointer-events:none;transition:.3s}
+    .overlay.open{opacity:1;pointer-events:auto}
+    .footer{padding:80px 24px 40px;border-top:1px solid var(--line);background:#fff}
+    .footer .foot-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px}
+    .footer .brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:18px}
+    .footer .muted{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.6}
+    .footer h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+    .footer a{display:block;font-size:14px;margin:8px 0}
+    .footer .bottom{max-width:1100px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.nav{padding:16px 18px}.shop-head{padding:100px 20px 24px}.sticky-filters{padding:0 20px;top:61px}.wrap{padding:0 20px 80px}}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}.footer .foot-wrap{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header class="nav"><a href="/" class="logo">CRESCITA</a><button class="nav-cta" id="cartBtn">Cart (<strong id="cartCount">0</strong>)</button></header>
+
+<div class="shop-head">
+  <h1>Shop Drop 001</h1>
+  <div class="meta"><strong>100 Pieces Only</strong><br>Cut & Sewn in SA — JHB / Worldwide</div>
+</div>
+
+<div class="sticky-filters" id="filters">
+  <div class="f active" data-go="all">All</div>
+  <div class="f" data-go="mens-sets">Mens Full Sets</div>
+  <div class="f" data-go="womens-sets">Womens Full Sets</div>
+  <div class="f" data-go="mens-jackets">Mens Jackets</div>
+  <div class="f" data-go="mens-bottoms">Mens Bottoms</div>
+  <div class="f" data-go="womens-jackets">Womens Jackets</div>
+  <div class="f" data-go="womens-bottoms">Womens Bottoms</div>
+</div>
+
+<main class="wrap">
+
+  <!-- MENS FULL SETS -->
+  <section class="section" id="mens-sets" data-cat="mens-sets">
+    <div class="section-head"><h2>Mens — Full Tracksuits</h2><span>Heavyweight 400gsm</span></div>
+    <div class="grid">
+      <div class="card" data-name="Mens Growth Set - Black" data-price="R 2,850" data-img="assets/blk_bw.png">
+        <div class="img-wrap"><span class="badge black">Best Seller</span><img src="assets/blk_bw.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Growth — Mens Set</div><div class="p-col">Black / S-XXL</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+      <div class="card" data-name="Mens Faith Set - White" data-price="R 2,850" data-img="assets/white_alt.png">
+        <div class="img-wrap"><img src="assets/white_alt.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Faith — Mens Set</div><div class="p-col">Off-White / S-XXL</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+      <div class="card" data-name="Mens Purpose Set - Blue" data-price="R 2,850" data-img="assets/blue.png">
+        <div class="img-wrap"><span class="badge">Low Stock</span><img src="assets/blue.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Purpose — Mens Set</div><div class="p-col">Washed Blue / S-XXL</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOMENS FULL SETS -->
+  <section class="section" id="womens-sets" data-cat="womens-sets">
+    <div class="section-head"><h2>Womens — Full Tracksuits</h2><span>With pink — New</span></div>
+    <div class="grid">
+      <div class="card" data-name="Womens Grace Set - Pink" data-price="R 2,850" data-img="assets/pink.png">
+        <div class="img-wrap"><span class="badge pink">NEW</span><img src="assets/pink.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Grace — Womens Set</div><div class="p-col">Blush Pink / XS-L</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+      <div class="card" data-name="Womens Faith Set - White" data-price="R 2,850" data-img="assets/white_alt.png">
+        <div class="img-wrap"><img src="assets/white_alt.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Faith — Womens Set</div><div class="p-col">Off-White / XS-L</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+      <div class="card" data-name="Womens Growth Set - Black" data-price="R 2,850" data-img="assets/blk_bw.png">
+        <div class="img-wrap"><img src="assets/blk_bw.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Growth — Womens Set</div><div class="p-col">Black / XS-L</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+      <div class="card" data-name="Womens Purpose Set - Blue" data-price="R 2,850" data-img="assets/blue.png">
+        <div class="img-wrap"><img src="assets/blue.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Purpose — Womens Set</div><div class="p-col">Washed Blue / XS-L</div></div><div class="p-price">R 2,850</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENS JACKETS -->
+  <section class="section" id="mens-jackets" data-cat="mens-jackets">
+    <div class="section-head"><h2>Mens — Jackets / Hoodies</h2><span>Sold as separates</span></div>
+    <div class="grid">
+      <div class="card" data-name="Mens Growth Jacket - Black" data-price="R 1,550" data-img="assets/blk_bw.png">
+        <div class="img-wrap"><img src="assets/blk_bw.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Growth Jacket — Mens</div><div class="p-col">Black</div></div><div class="p-price">R 1,550</div></div>
+      </div>
+      <div class="card" data-name="Mens Faith Jacket - White" data-price="R 1,550" data-img="assets/white_alt.png">
+        <div class="img-wrap"><img src="assets/white_alt.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Faith Jacket — Mens</div><div class="p-col">Off-White</div></div><div class="p-price">R 1,550</div></div>
+      </div>
+      <div class="card" data-name="Mens Purpose Jacket - Blue" data-price="R 1,550" data-img="assets/blue.png">
+        <div class="img-wrap"><img src="assets/blue.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Purpose Jacket — Mens</div><div class="p-col">Washed Blue</div></div><div class="p-price">R 1,550</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENS BOTTOMS -->
+  <section class="section" id="mens-bottoms" data-cat="mens-bottoms">
+    <div class="section-head"><h2>Mens — Bottoms</h2><span>Sold as separates</span></div>
+    <div class="grid">
+      <div class="card" data-name="Mens Growth Bottoms - Black" data-price="R 1,350" data-img="assets/blk_bw.png">
+        <div class="img-wrap"><img src="assets/blk_bw.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Growth Bottoms — Mens</div><div class="p-col">Black</div></div><div class="p-price">R 1,350</div></div>
+      </div>
+      <div class="card" data-name="Mens Faith Bottoms - White" data-price="R 1,350" data-img="assets/white_alt.png">
+        <div class="img-wrap"><img src="assets/white_alt.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Faith Bottoms — Mens</div><div class="p-col">Off-White</div></div><div class="p-price">R 1,350</div></div>
+      </div>
+      <div class="card" data-name="Mens Purpose Bottoms - Blue" data-price="R 1,350" data-img="assets/blue.png">
+        <div class="img-wrap"><img src="assets/blue.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Purpose Bottoms — Mens</div><div class="p-col">Washed Blue</div></div><div class="p-price">R 1,350</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOMENS JACKETS -->
+  <section class="section" id="womens-jackets" data-cat="womens-jackets">
+    <div class="section-head"><h2>Womens — Jackets / Hoodies</h2><span>Cropped & Regular fit</span></div>
+    <div class="grid">
+      <div class="card" data-name="Womens Grace Jacket - Pink" data-price="R 1,550" data-img="assets/pink.png">
+        <div class="img-wrap"><span class="badge pink">NEW</span><img src="assets/pink.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Grace Jacket — Womens</div><div class="p-col">Blush Pink</div></div><div class="p-price">R 1,550</div></div>
+      </div>
+      <div class="card" data-name="Womens Growth Jacket - Black" data-price="R 1,550" data-img="assets/blk_bw.png">
+        <div class="img-wrap"><img src="assets/blk_bw.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Growth Jacket — Womens</div><div class="p-col">Black</div></div><div class="p-price">R 1,550</div></div>
+      </div>
+      <div class="card" data-name="Womens Faith Jacket - White" data-price="R 1,550" data-img="assets/white_alt.png">
+        <div class="img-wrap"><img src="assets/white_alt.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Faith Jacket — Womens</div><div class="p-col">Off-White</div></div><div class="p-price">R 1,550</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WOMENS BOTTOMS -->
+  <section class="section" id="womens-bottoms" data-cat="womens-bottoms">
+    <div class="section-head"><h2>Womens — Bottoms</h2><span>Cropped & Regular fit</span></div>
+    <div class="grid">
+      <div class="card" data-name="Womens Grace Bottoms - Pink" data-price="R 1,350" data-img="assets/pink.png">
+        <div class="img-wrap"><span class="badge pink">NEW</span><img src="assets/pink.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Grace Bottoms — Womens</div><div class="p-col">Blush Pink</div></div><div class="p-price">R 1,350</div></div>
+      </div>
+      <div class="card" data-name="Womens Growth Bottoms - Black" data-price="R 1,350" data-img="assets/blk_bw.png">
+        <div class="img-wrap"><img src="assets/blk_bw.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Growth Bottoms — Womens</div><div class="p-col">Black</div></div><div class="p-price">R 1,350</div></div>
+      </div>
+      <div class="card" data-name="Womens Faith Bottoms - White" data-price="R 1,350" data-img="assets/white_alt.png">
+        <div class="img-wrap"><img src="assets/white_alt.png" onerror="this.style.display='none'"><div class="quick">Quick View</div></div>
+        <div class="info"><div><div class="p-name">Faith Bottoms — Womens</div><div class="p-col">Off-White</div></div><div class="p-price">R 1,350</div></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div style="padding:24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between"><h3 style="font:600 12px Montserrat;letter-spacing:.2em;text-transform:uppercase" id="dName">Product</h3><button id="close" style="width:32px;height:32px;border:1px solid var(--line);border-radius:50%;background:#fff;cursor:pointer">✕</button></div>
+  <div style="flex:1;padding:24px;overflow:auto">
+    <div style="aspect-ratio:4/5;background:var(--card);border:1px solid var(--line);margin-bottom:20px"><img id="dImg" style="display:none;width:100%;height:100%;object-fit:cover"></div>
+    <div id="dPrice" style="font:600 14px Montserrat">R 0</div>
+    <div style="margin-top:20px;font:600 11px Montserrat;letter-spacing:.18em;text-transform:uppercase">Size</div>
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap" id="sizes"></div>
+    <button id="add" style="margin-top:24px;width:100%;height:52px;background:#000;color:#fff;border:1.5px solid #000;font:700 11px Montserrat;letter-spacing:.14em;text-transform:uppercase;cursor:pointer">Add to Cart</button>
+  </div>
+</aside>
+
+<footer class="footer">
+  <div class="foot-wrap">
+    <div><div class="brand">CRESCITA</div><div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div></div>
+    <div><h4>Shop</h4><a href="#mens-sets">Mens Sets</a><a href="#womens-sets">Womens Sets</a><a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a></div>
+    <div><h4>Follow</h4><a href="#">Instagram</a><a href="#">TikTok</a></div>
+  </div>
+  <div class="bottom"><div>© 2026 CRESCITA</div><div>Growth / Faith / Purpose / Grace</div></div>
+</footer>
+
+<script>
+const filters=document.querySelectorAll('.f');
+const sections=document.querySelectorAll('.section');
+filters.forEach(f=>{
+ f.addEventListener('click',()=>{
+   filters.forEach(x=>x.classList.remove('active')); f.classList.add('active');
+   const go=f.dataset.go;
+   if(go==='all'){ sections.forEach(s=>s.style.display='block'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+   sections.forEach(s=>{ s.style.display = (s.id===go) ? 'block' : 'none'; });
+   document.getElementById(go)?.scrollIntoView({behavior:'smooth'});
+ });
+});
+const drawer=document.getElementById('drawer'), overlay=document.getElementById('overlay');
+const dImg=document.getElementById('dImg'), dName=document.getElementById('dName'), dPrice=document.getElementById('dPrice');
+const sizesBox=document.getElementById('sizes');
+let cart=0;
+function openD(card){
+  dName.textContent=card.dataset.name;
+  dPrice.textContent=card.dataset.price;
+  const src=card.dataset.img; if(src){ dImg.src=src; dImg.style.display='block'; }
+  const isWomens=card.dataset.name.toLowerCase().includes('womens');
+  const opts=isWomens?['XS','S','M','L']:['S','M','L','XL','XXL'];
+  sizesBox.innerHTML=''; opts.forEach((s,i)=>{
+    const b=document.createElement('div'); b.textContent=s;
+    b.style.cssText='width:46px;height:46px;border:1.5px solid #000;display:grid;place-items:center;font:600 12px Montserrat;cursor:pointer';
+    if(i===1) {b.style.background='#000'; b.style.color='#fff';}
+    b.onclick=()=>{ [...sizesBox.children].forEach(c=>{c.style.background='#fff';c.style.color='#000'}); b.style.background='#000';b.style.color='#fff';}
+    sizesBox.appendChild(b);
+  });
+  drawer.classList.add('open'); overlay.classList.add('open');
+}
+function closeD(){ drawer.classList.remove('open'); overlay.classList.remove('open'); }
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('click',()=>openD(c)));
+document.getElementById('close').onclick=closeD; overlay.onclick=closeD;
+document.getElementById('add').onclick=()=>{ cart++; document.getElementById('cartCount').textContent=cart; closeD(); }
+document.getElementById('cartBtn').onclick=()=>{ drawer.classList.add('open'); overlay.classList.add('open'); };
+</script>
+</body>
+</html>
