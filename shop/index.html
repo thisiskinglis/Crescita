@@ -9,7 +9,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#fff !important}
 body{color:#111;font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none} 
+img{width:100%;display:block;height:100%;object-fit:cover;object-position:center top}
 .top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.98);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top-main{display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
 .logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:18px}
@@ -21,8 +22,6 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 .label-row{display:flex;justify-content:space-between;padding:20px 24px 12px}
 .label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800;text-transform:uppercase}
 .label-row span{font-size:9px;color:var(--muted);text-transform:uppercase}
-
-/* MEN / 001 - BLACK RECTANGLE */
 .hero{
   display:grid;
   grid-template-columns:1.15fr .85fr;
@@ -39,14 +38,10 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 .hero-right .imgbox{border-bottom:1px solid #111}
 .hero-right .imgbox:last-child{border-bottom:none}
 .hero .imgbox,.hero-flip .imgbox{border:none;aspect-ratio:auto}
-
-/* OVERLAY */
 .imgbox{position:relative;background:#F2F2F2;overflow:hidden}
 .overlay{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:6px}
 .tag{background:#fff;border:1px solid #111;padding:6px 10px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
 .shopbtn{background:#111;color:#fff;border:1px solid #111;padding:6px 10px;font-size:8px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;width:fit-content}
-
-/* JACKETS / PANTS */
 .split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
 .split .col{padding:0 24px 24px;border-right:1px solid var(--line)}
 .split .col:last-child{border-right:none}
@@ -62,8 +57,6 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 .sub{font-size:9px;color:var(--muted)}
 .add{width:100%;margin-top:8px;background:#fff;border:1px solid #111;padding:10px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .add:hover{background:#111;color:#fff}
-
-/* WOM / 001 - BLACK RECTANGLE */
 .hero-flip{
   display:grid;
   grid-template-columns:.9fr 1.1fr;
@@ -79,7 +72,6 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 .hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr;height:100%;gap:0}
 .hero-flip-left .bottom-two .imgbox:first-child{border-right:1px solid #111}
 .hero-flip-right{height:100%}
-
 @media(max-width:900px){
 .hero,.hero-flip,.split{grid-template-columns:1fr;height:auto}
 .hero{grid-template-rows:auto}
@@ -94,14 +86,12 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 }
 @media(max-width:600px){.grid3{grid-template-columns:1fr}}
 </style>
-</style>
 </head>
 <body>
 <div class="top">
 <div class="top-main"><a href="/" class="logo">CRESCITA</a><div class="center">SHOP DROP 001</div><a href="#" class="cart">CART (<span id="c">0</span>)</a></div>
 <div class="filters"><a href="#men">MENS FULL SETS</a><a href="#womens">WOMENS FULL SETS</a><a href="#mj">MENS JACKETS</a><a href="#mb">MENS BOTTOMS</a><a href="#wj">WOMENS JACKETS</a><a href="#wb">WOMENS BOTTOMS</a></div>
 </div>
-
 <div class="wrap">
 <div class="label-row" id="men"><h2>MEN / 001</h2><span>FULL TRACKSUITS</span></div>
 <div class="hero">
@@ -111,7 +101,6 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 <div class="imgbox"><img src="/assets/mens-set-blue.png"><div class="overlay"><div class="tag">BLUE / 001</div><div class="shopbtn">SHOP →</div></div></div>
 </div>
 </div>
-
 <div class="split">
 <div class="col" id="mj"><div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
@@ -126,7 +115,6 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 <div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
 </div></div>
 </div>
-
 <div class="label-row" id="womens"><h2>WOM / 001</h2><span>FULL TRACKSUITS</span></div>
 <div class="hero-flip">
 <div class="hero-flip-left">
@@ -138,7 +126,6 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;o
 </div>
 <div class="hero-flip-right"><div class="imgbox"><img src="/assets/womens-set-pink.png"><div class="overlay"><div class="tag">GRACE PINK / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
 </div>
-
 <div class="split">
 <div class="col" id="wj"><div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
