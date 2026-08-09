@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CRESCITA — Growth / Faith / Purpose</title>
+<style>
+:root{--line:#EAEAEA;--muted:#6b6b6b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Helvetica,Arial,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
+a{color:#111;text-decoration:none}
+img{display:block;width:100%}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{font-weight:700;letter-spacing:0.22em;font-size:13px}
+.pill{border:1px solid #111;border-radius:999px;padding:7px 14px;font-size:9px;letter-spacing:0.15em;text-transform:uppercase}
+
+/* 3:18 HERO - from your image */
+.hero-318{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;background:#F6F3EE;border-bottom:1px solid var(--line)}
+.hero-318-left{padding:80px 56px;display:flex;flex-direction:column;justify-content:center}
+.big{font-size:clamp(80px,10vw,140px);font-weight:900;line-height:0.9;letter-spacing:-0.05em}
+.line{width:160px;height:1px;background:#111;margin:28px 0 24px}
+.grow{font-size:clamp(26px,3.2vw,38px);font-weight:800;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95}
+.body{margin-top:40px;max-width:360px;font-family:Georgia,serif;font-size:15px;line-height:1.6;opacity:0.8}
+.never{font-weight:700;margin-top:16px}
+.phil-link{margin-top:56px;display:flex;justify-content:space-between;max-width:260px;border-bottom:1px solid #111;padding-bottom:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase}
+.hero-318-right{background:#E9E5DE;position:relative;overflow:hidden}
+.hero-318-right img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* OLD CODE - cleaned */
+.drop-preview{padding:64px 24px;max-width:1300px;margin:0 auto}
+.drop-preview h3{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:24px;opacity:0.6}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.item{background:#f5f5f5;border:1px solid var(--line);padding:0 0 12px;aspect-ratio:4/5;display:flex;flex-direction:column}
+.item img{flex:1;object-fit:cover}
+.item span{padding:12px 14px 0;font-size:11px;letter-spacing:0.15em;text-transform:uppercase}
+.view-all{display:inline-block;margin-top:20px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:4px}
+
+.meaning{padding:80px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#FFFEFD}
+.meaning .wrap{max-width:900px;margin:0 auto}
+.meaning h2{font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:20px}
+.meaning p{font-size:15px;line-height:1.7;max-width:680px;opacity:0.8}
+.ipa{font-size:12px;opacity:0.5;margin-left:8px}
+.label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;border-radius:999px;margin-left:12px;vertical-align:middle}
+
+.signup-clean{padding:64px 24px;text-align:center;background:#F2F2F2;border-top:1px solid var(--line)}
+.signup-clean h4{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:12px}
+.signup-clean p{font-size:13px;opacity:0.6;max-width:420px;margin:0 auto 20px;line-height:1.6}
+.signup-clean form{display:flex;justify-content:center;gap:8px;max-width:360px;margin:0 auto}
+.signup-clean input{flex:1;padding:12px 14px;border:1px solid #111;background:#fff;font-size:13px}
+.signup-clean button{padding:12px 20px;background:#111;color:#fff;border:1px solid #111;font-size:11px;letter-spacing:0.15em;text-transform:uppercase}
+.signup-clean small{display:block;margin-top:12px;font-size:10px;opacity:0.4}
+
+/* FOOTER */
+.footer{padding:56px 24px 20px;background:#fff;border-top:1px solid #E5E5E5}
+.footer .wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 0.7fr 0.5fr;gap:40px;padding-bottom:40px}
+.footer .brand{font-size:12px;letter-spacing:0.22em;font-weight:700;margin-bottom:10px}
+.footer .muted{font-size:11px;line-height:1.6;opacity:0.55;max-width:300px}
+.footer h4{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;margin-bottom:14px}
+.footer .wrap a{font-size:11px;display:block;margin-bottom:7px;opacity:0.8}
+.footer .policies-row{max-width:1200px;margin:0 auto;border-top:1px solid #EAEAEA;padding:16px 0;display:flex;gap:20px;flex-wrap:wrap}
+.footer .policies-row a{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.45}
+.footer .bottom.small{max-width:1200px;margin:0 auto;border-top:1px solid #EAEAEA;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;font-size:9px;opacity:0.4}
+@media(max-width:768px){.hero-318{grid-template-columns:1fr}.hero-318-left{padding:48px 24px}.grid{grid-template-columns:1fr}.footer .wrap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="nav"><a href="/" class="logo">CRESCITA</a><a href="/shop/" class="pill">SHOP NOW</a></div>
+
+<!-- NEW 3:18 HERO -->
+<section class="hero-318">
+  <div class="hero-318-left">
+    <div class="big">3:18</div>
+    <div class="line"></div>
+    <div class="grow">GROW IN<br>GRACE.</div>
+    <div class="body">
+      Growth isn’t a destination.<br>It is the discipline of becoming.<br>In faith. In character. In purpose.
+      <div class="never">Never Finished.</div>
+    </div>
+    <a href="/shop/" class="phil-link"><span>Our Philosophy</span><span>→</span></a>
+  </div>
+  <div class="hero-318-right">
+    <!-- USE YOUR PANTS IMAGE HERE -->
+    <img src="/assets/318-detail.jpg" alt="3:18 Detail" onerror="this.src='/assets/blue.png'">
+  </div>
+</section>
+
+<!-- YOUR OLD CODE STARTS HERE -->
+<section class="drop-preview">
+  <h3>Drop 001 — Preview</h3>
+  <div class="grid">
+    <a href="/shop/" class="item"><img src="/assets/blk_bw.png" alt="Black"><span>Growth</span></a>
+    <a href="/shop/" class="item"><img src="/assets/white_alt.png" alt="White"><span>Faith</span></a>
+    <a href="/shop/" class="item"><img src="/assets/blue.png" alt="Blue"><span>Purpose</span></a>
+  </div>
+  <a href="/shop/" class="view-all">View Full Drop →</a>
+</section>
+
+<section class="meaning">
+  <div class="wrap">
+    <h2>(kreh-<em>SHEE</em>-tah)<span class="ipa">/kreʃˈʃiː.ta/</span><span class="label">CRESCITA</span></h2>
+    <p><strong>Crescita</strong> is an Italian word meaning <strong>growth, becoming, and continuous progress</strong>. It reflects the belief that growth is a lifelong journey. Every collection is inspired by the pursuit of becoming—growing in faith, character, discipline and purpose, while embracing the humility to keep learning and improving.</p>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 24px;background:#fff;text-align:center">
+  <div style="max-width:1300px;margin:0 auto">
+    <div style="font:700 10px sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6b6b6b;margin-bottom:16px">Next Chapter</div>
+    <h2 style="font-size:clamp(32px,6vw,64px);line-height:.9;text-transform:uppercase;margin-bottom:20px">DROP 002 —<br>COMING SOON</h2>
+    <p style="font-size:13px;color:#6b6b6b;max-width:520px;margin:0 auto 40px;line-height:1.7">Growth continues. New colorways, new cuts. Be first to access — 50 pieces only.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto">
+      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="/assets/drop002-1.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
+      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="/assets/drop002-2.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
+      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="/assets/drop002-3.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
+    </div>
+  </div>
+</section>
+
+<section class="signup-clean">
+  <h4>Join the List</h4>
+  <p>Be first to access Drop 002, exclusive releases and the story behind each collection.</p>
+  <form action="https://formspree.io/f/mqevqgno" method="POST"><input type="email" name="email" placeholder="your email" required><button type="submit">JOIN</button></form>
+  <small>No spam. Unsubscribe anytime. Johannesburg / Worldwide.</small>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><div class="brand">CRESCITA</div><div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div></div>
+    <div><h4>Shop</h4><a href="/shop/">Drop 001 — 100 pieces</a><a href="/shop/">Cut & sewn in SA</a><a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a></div>
+    <div><h4>Follow</h4><div class="social"><a href="#">IG</a><a href="#">TT</a></div></div>
+  </div>
+  <div class="policies-row"><a href="/shipping-policy/">Shipping</a><a href="/return-policy/">Returns & Exchanges</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-service/">Terms of Service</a></div>
+  <div class="bottom small"><div>© 2026 CRESCITA. All rights reserved. Brand Strategy, Design & Digital by KINGLIS.</div><div><a href="https://thisiskinglis.com">thisiskinglis.com</a></div></div>
+</footer>
+
+</body>
+</html>
