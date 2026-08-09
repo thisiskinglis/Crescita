@@ -10,61 +10,77 @@
 html,body{background:#FFFFFF !important}
 body{color:#111;font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none} img{width:100%;display:block}
+
 .top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top-main{display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
-.logo{font-weight:900;letter-spacing:.22em;font-size:12px}
-.center{font-weight:800;letter-spacing:.18em;font-size:12px}
-.cart{border:1px solid #111;border-radius:999px;padding:6px 14px;font-size:10px;letter-spacing:.14em}
+.logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:18px}
+.center{font-weight:800;letter-spacing:.18em;font-size:11px}
+.cart{border:1px solid #111;background:#111;color:#fff;padding:8px 14px;font-size:10px;letter-spacing:.14em}
 .filters{display:flex;gap:22px;padding:10px 24px;overflow:auto;white-space:nowrap;border-top:1px solid var(--line)}
 .filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
 .filters a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+
 .wrap{max-width:1440px;margin:0 auto}
 .label-row{display:flex;justify-content:space-between;align-items:center;padding:18px 24px 14px}
 .label-row h2{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:800}
 .label-row span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-/* EDITORIAL HERO - FIXED 3-ITEM BLOCK */
+
+/* EDITORIAL HERO - FIXED - NO GAP */
 .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;padding:0 32px 24px;background:#fff;height:640px;align-items:stretch}
 .hero-left{height:100%}
-.hero-left .imgbox{height:100%}
+.hero-left > .imgbox{height:100%}
 .hero-right{display:grid;grid-template-rows:1fr 1fr;gap:12px;height:100%}
-.hero-right .imgbox{height:100%}
+.hero-right > .imgbox{height:100%}
+
 .imgbox{position:relative;background:#F2F2F2;border:1px solid var(--line);overflow:hidden}
 .imgbox img{width:100%;height:100%;object-fit:cover;object-position:center top;background:#F2F2F2}
 .overlay{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
 .tag{background:#fff;border:1px solid #111;padding:6px 10px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;display:inline-block}
 .shopbtn{background:#111;color:#fff;border:1px solid #111;padding:7px 10px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;display:inline-block;width:fit-content;font-weight:700}
-/* SPLIT ROW */
-.split{ display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--line); background:#fff}
+
+/* SPLIT ROW - JACKETS / BOTTOMS - FIX OVERLAP */
+.split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);background:#fff}
 .split .col{padding:0 32px 32px;border-right:1px solid var(--line)}
 .split .col:last-child{border-right:none}
 .small-head{display:flex;justify-content:space-between;align-items:center;padding:18px 0 12px}
 .small-head h3{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
 .small-head span{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .card{background:#fff}
-.card .imgbox{aspect-ratio:4/5;height:auto}
+.card > .imgbox{aspect-ratio:4/5;height:auto !important} /* <-- THIS FIXES YOUR OVERLAP */
 .meta{display:flex;justify-content:space-between;padding:8px 0 4px}
 .name{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
 .price{font-size:10px;font-weight:700}
 .sub{font-size:9px;color:var(--muted);margin-top:2px}
-.quickadd{font-size:8px;letter-spacing:.16em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;opacity:.6;margin-top:6px;display:inline-block}
 .add{width:100%;margin-top:10px;background:#fff;border:1px solid #111;padding:10px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
 .add:hover{background:#111;color:#fff}
-/* WOM HERO FLIPPED */
-.hero-flip{display:grid;grid-template-columns:.9fr 1.1fr;gap:14px;padding:0 24px 24px;background:#fff}
-.hero-flip-left{display:grid;grid-template-rows:auto auto;gap:14px}
-.hero-flip-left .top-wide .imgbox{height:380px}
-.hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.hero-flip-right .imgbox{height:760px}
+
+/* WOM HERO FLIPPED - REDUCED TO MATCH */
+.hero-flip{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;padding:0 32px 24px;background:#fff;height:640px}
+.hero-flip-left{display:grid;grid-template-rows:1fr 1fr;gap:12px;height:100%}
+.hero-flip-left .top-wide{height:100%}
+.hero-flip-left .top-wide .imgbox{height:100%}
+.hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%}
+.hero-flip-left .bottom-two .imgbox{height:100%}
+.hero-flip-right{height:100%}
+.hero-flip-right .imgbox{height:100%}
+
 @media(max-width:1000px){
-.hero,.hero-flip,.split{grid-template-columns:1fr}
-.hero-left .imgbox,.hero-flip-right .imgbox{height:560px}
-.hero-flip-left .top-wide .imgbox{height:320px}
+.hero,.hero-flip,.split{grid-template-columns:1fr;height:auto}
+.hero-left,.hero-right,.hero-flip-left,.hero-flip-right{height:auto}
+.hero-left > .imgbox,.hero-flip-right .imgbox{height:520px !important}
+.hero-right > .imgbox,.hero-flip-left .imgbox{height:380px !important}
 .split .col{border-right:none;border-bottom:1px solid var(--line)}
 .grid3,.grid4{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:600px){.grid3,.grid4{grid-template-columns:1fr}.top-main{padding:12px 16px}.label-row,.small-head{padding-left:16px;padding-right:16px}.hero,.hero-flip,.split .col{padding-left:16px;padding-right:16px}}
+@media(max-width:600px){
+.grid3,.grid4{grid-template-columns:1fr}
+.top-main{padding:12px 16px}
+.label-row,.small-head{padding-left:16px;padding-right:16px}
+.hero,.hero-flip,.split .col{padding-left:16px;padding-right:16px}
+}
 </style>
 </head>
 <body>
