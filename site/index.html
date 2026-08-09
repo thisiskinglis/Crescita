@@ -3,72 +3,98 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CRESCITA — Growth / Faith / Purpose</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 <style>
-:root{--line:#EAEAEA;--muted:#6b6b6b}
+:root{--line:#EAEAEA;--muted:#6b6b6b;--paper:#F9F5EF}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:Helvetica,Arial,sans-serif;background:#fff;color:#111;-webkit-font-smoothing:antialiased}
 a{color:#111;text-decoration:none}
 img{display:block;width:100%}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.logo{font-weight:700;letter-spacing:0.22em;font-size:13px}
-.pill{border:1px solid #111;border-radius:999px;padding:7px 14px;font-size:9px;letter-spacing:0.15em;text-transform:uppercase}
+/* NAV - MATCHES HOMEPAGE */
+.nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:22px 32px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:20px;text-transform:uppercase}
+.pill{border:1px solid #111;background:#111;color:#fff;padding:12px 26px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;display:inline-block;transition:.2s}
+.pill:hover{background:#fff;color:#111}
 
-/* 3:18 HERO - from your image */
-.hero-318{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;background:#F6F3EE;border-bottom:1px solid var(--line)}
-.hero-318-left{padding:80px 56px;display:flex;flex-direction:column;justify-content:center}
-.big{font-size:clamp(80px,10vw,140px);font-weight:900;line-height:0.9;letter-spacing:-0.05em}
-.line{width:160px;height:1px;background:#111;margin:28px 0 24px}
-.grow{font-size:clamp(26px,3.2vw,38px);font-weight:800;text-transform:uppercase;letter-spacing:0.02em;line-height:0.95}
-.body{margin-top:40px;max-width:360px;font-family:Georgia,serif;font-size:15px;line-height:1.6;opacity:0.8}
-.never{font-weight:700;margin-top:16px}
-.phil-link{margin-top:56px;display:flex;justify-content:space-between;max-width:260px;border-bottom:1px solid #111;padding-bottom:10px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase}
-.hero-318-right{background:#E9E5DE;position:relative;overflow:hidden}
+/* 3:18 HERO - ELEVATED */
+.hero-318{display:grid;grid-template-columns:1.05fr 0.95fr;min-height:76vh;border-bottom:1px solid var(--line);background:var(--paper)}
+.hero-318-left{padding:84px 72px 72px;display:flex;flex-direction:column;justify-content:center}
+.big{font-family:'Orbitron',sans-serif;font-size:clamp(64px,8vw,108px);font-weight:700;line-height:.9;letter-spacing:-.04em}
+.line{width:84px;height:1px;background:#111;margin:28px 0 22px}
+.grow{font-size:clamp(22px,2.4vw,30px);font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:.95}
+.body{margin-top:36px;max-width:340px;font-family:Georgia,serif;font-size:14.5px;line-height:1.7;opacity:.75}
+.never{font-family:Helvetica,Arial,sans-serif;font-weight:700;margin-top:16px;font-size:13px}
+.phil-link{margin-top:48px;display:inline-flex;align-items:center;gap:14px;border:1px solid #111;background:#111;color:#fff;padding:14px 28px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;width:fit-content;transition:.2s}
+.phil-link:hover{background:#fff;color:#111}
+.hero-318-right{background:#E9E5DE;position:relative;overflow:hidden;min-height:520px}
 .hero-318-right img{width:100%;height:100%;object-fit:cover;object-position:center top}
 
-/* OLD CODE - cleaned */
-.drop-preview{padding:64px 24px;max-width:1300px;margin:0 auto}
-.drop-preview h3{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:24px;opacity:0.6}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.item{background:#f5f5f5;border:1px solid var(--line);padding:0 0 12px;aspect-ratio:4/5;display:flex;flex-direction:column}
-.item img{flex:1;object-fit:cover}
-.item span{padding:12px 14px 0;font-size:11px;letter-spacing:0.15em;text-transform:uppercase}
-.view-all{display:inline-block;margin-top:20px;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:4px}
+/* DROP 001 - EDITORIAL */
+.drop-preview{padding:96px 32px 80px;max-width:1440px;margin:0 auto}
+.drop-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.drop-head h3{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.5;font-weight:600}
+.view-all{font-size:10px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1.5px solid #111;padding-bottom:4px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.item{display:block;text-align:left}
+.item img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f5f5f5;transition:transform .4s}
+.item:hover img{transform:scale(1.02)}
+.item span{display:block;margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.8}
 
-.meaning{padding:80px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#FFFEFD}
-.meaning .wrap{max-width:900px;margin:0 auto}
-.meaning h2{font-size:clamp(28px,4vw,42px);line-height:1.1;margin-bottom:20px}
-.meaning p{font-size:15px;line-height:1.7;max-width:680px;opacity:0.8}
-.ipa{font-size:12px;opacity:0.5;margin-left:8px}
-.label{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;border-radius:999px;margin-left:12px;vertical-align:middle}
+/* MEANING */
+.meaning{padding:110px 32px;background:#FFFEFD;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.meaning .wrap{max-width:720px;margin:0 auto;text-align:center}
+.meaning h2{font-size:clamp(26px,3.2vw,38px);line-height:1.1;margin-bottom:22px;letter-spacing:-.01em}
+.meaning h2 em{font-family:Georgia,serif;font-weight:400;font-style:italic}
+.meaning p{font-size:15px;line-height:1.8;opacity:.75;margin:0 auto}
+.ipa{font-size:11px;opacity:.45;margin-left:10px;font-family:Helvetica,Arial,sans-serif}
+.label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--line);padding:4px 10px;border-radius:999px;margin-left:14px;vertical-align:middle;font-weight:700}
 
-.signup-clean{padding:64px 24px;text-align:center;background:#F2F2F2;border-top:1px solid var(--line)}
-.signup-clean h4{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:12px}
-.signup-clean p{font-size:13px;opacity:0.6;max-width:420px;margin:0 auto 20px;line-height:1.6}
-.signup-clean form{display:flex;justify-content:center;gap:8px;max-width:360px;margin:0 auto}
-.signup-clean input{flex:1;padding:12px 14px;border:1px solid #111;background:#fff;font-size:13px}
-.signup-clean button{padding:12px 20px;background:#111;color:#fff;border:1px solid #111;font-size:11px;letter-spacing:0.15em;text-transform:uppercase}
-.signup-clean small{display:block;margin-top:12px;font-size:10px;opacity:0.4}
+/* DROP 002 */
+.drop-002{padding:120px 32px;background:#fff;border-bottom:1px solid var(--line);text-align:center}
+.drop-002 .eyebrow{font:600 10px sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.drop-002 h2{font-size:clamp(34px,5.5vw,62px);line-height:.9;text-transform:uppercase;letter-spacing:-.02em;font-weight:900;margin-bottom:16px}
+.drop-002 > p{font-size:13px;color:var(--muted);max-width:480px;margin:0 auto 48px;line-height:1.7}
+.drop-002-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1100px;margin:0 auto}
+.drop-002-grid > div{aspect-ratio:4/5;background:#f5f5f5;border:1px solid #EAEAEA;overflow:hidden}
 
-/* FOOTER */
-.footer{padding:56px 24px 20px;background:#fff;border-top:1px solid #E5E5E5}
-.footer .wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 0.7fr 0.5fr;gap:40px;padding-bottom:40px}
-.footer .brand{font-size:12px;letter-spacing:0.22em;font-weight:700;margin-bottom:10px}
-.footer .muted{font-size:11px;line-height:1.6;opacity:0.55;max-width:300px}
-.footer h4{font-size:9px;letter-spacing:0.18em;text-transform:uppercase;opacity:0.5;margin-bottom:14px}
-.footer .wrap a{font-size:11px;display:block;margin-bottom:7px;opacity:0.8}
-.footer .policies-row{max-width:1200px;margin:0 auto;border-top:1px solid #EAEAEA;padding:16px 0;display:flex;gap:20px;flex-wrap:wrap}
-.footer .policies-row a{font-size:9px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.45}
-.footer .bottom.small{max-width:1200px;margin:0 auto;border-top:1px solid #EAEAEA;padding-top:16px;display:flex;justify-content:space-between;flex-wrap:wrap;font-size:9px;opacity:0.4}
-@media(max-width:768px){.hero-318{grid-template-columns:1fr}.hero-318-left{padding:48px 24px}.grid{grid-template-columns:1fr}.footer .wrap{grid-template-columns:1fr}}
+/* MAILING LIST - LUXURY */
+.signup-clean{padding:88px 24px;text-align:center;background:#F8F6F3;border-top:1px solid var(--line)}
+.signup-clean h4{font-size:11px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:12px;font-weight:700}
+.signup-clean p{font-size:13px;opacity:.6;max-width:420px;margin:0 auto 24px;line-height:1.6}
+.signup-clean form{display:flex;justify-content:center;gap:0;max-width:440px;margin:0 auto;border:1.5px solid #111;background:#fff}
+.signup-clean input{flex:1;height:48px;padding:0 16px;border:0;background:#fff;font-size:14px;outline:none}
+.signup-clean button{height:48px;padding:0 28px;background:#111;color:#fff;border:0;border-left:1.5px solid #111;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;cursor:pointer}
+.signup-clean button:hover{background:#fff;color:#111}
+.signup-clean small{display:block;margin-top:14px;font-size:10px;opacity:.4;letter-spacing:.02em}
+
+/* FOOTER - REFINED */
+.footer{padding:72px 32px 24px;background:#fff;border-top:1px solid #EAEAEA}
+.footer .wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr .7fr .6fr;gap:48px;padding-bottom:44px}
+.footer .brand{font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:.22em;font-weight:700;margin-bottom:12px}
+.footer .muted{font-size:11px;line-height:1.7;opacity:.55;max-width:300px}
+.footer h4{font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;margin-bottom:16px;font-weight:700}
+.footer .wrap a{font-size:11px;display:block;margin-bottom:8px;opacity:.75;transition:.2s}
+.footer .wrap a:hover{opacity:1}
+.footer .social{display:flex;gap:8px}
+.footer .social a{width:32px;height:32px;border:1px solid #E5E5E5;border-radius:50%;display:grid;place-items:center;margin:0;font-size:11px;font-weight:700}
+.footer .policies-row{max-width:1280px;margin:0 auto;border-top:1px solid #EAEAEA;padding:18px 0;display:flex;gap:22px;flex-wrap:wrap}
+.footer .policies-row a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.45}
+.footer .bottom.small{max-width:1280px;margin:0 auto;border-top:1px solid #EAEAEA;padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:9px;opacity:.4}
+.footer .bottom.small a{font-size:9px;opacity:1}
+
+@media(max-width:900px){
+.hero-318{grid-template-columns:1fr}.hero-318-left{padding:56px 24px}.hero-318-right{min-height:64vh}
+.grid{grid-template-columns:1fr;gap:48px}.drop-preview{padding:64px 20px}
+.drop-002{padding:80px 20px}.drop-002-grid{grid-template-columns:1fr}
+.footer .wrap{grid-template-columns:1fr;gap:32px}
+}
 </style>
 </head>
 <body>
 
 <div class="nav"><a href="/" class="logo">CRESCITA</a><a href="/shop/" class="pill">SHOP NOW</a></div>
 
-<!-- NEW 3:18 HERO -->
 <section class="hero-318">
   <div class="hero-318-left">
     <div class="big">3:18</div>
@@ -81,20 +107,20 @@ img{display:block;width:100%}
     <a href="/shop/" class="phil-link"><span>SHOP NOW</span><span>→</span></a>
   </div>
   <div class="hero-318-right">
-    <!-- USE YOUR PANTS IMAGE HERE -->
     <img src="/assets/318-detail.jpg" alt="3:18 Detail" onerror="this.src='/assets/blue.png'">
   </div>
 </section>
 
-<!-- YOUR OLD CODE STARTS HERE -->
 <section class="drop-preview">
-  <h3>Drop 001 — Preview</h3>
+  <div class="drop-head">
+    <h3>Drop 001 — Preview</h3>
+    <a href="/shop/" class="view-all">View Full Drop →</a>
+  </div>
   <div class="grid">
     <a href="/shop/" class="item"><img src="/assets/blk_bw.png" alt="Black"><span>Growth</span></a>
     <a href="/shop/" class="item"><img src="/assets/white_alt.png" alt="White"><span>Faith</span></a>
     <a href="/shop/" class="item"><img src="/assets/blue.png" alt="Blue"><span>Purpose</span></a>
   </div>
-  <a href="/shop/" class="view-all">View Full Drop →</a>
 </section>
 
 <section class="meaning">
@@ -104,16 +130,14 @@ img{display:block;width:100%}
   </div>
 </section>
 
-<section style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:80px 24px;background:#fff;text-align:center">
-  <div style="max-width:1300px;margin:0 auto">
-    <div style="font:700 10px sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#6b6b6b;margin-bottom:16px">Next Chapter</div>
-    <h2 style="font-size:clamp(32px,6vw,64px);line-height:.9;text-transform:uppercase;margin-bottom:20px">DROP 002 —<br>COMING SOON</h2>
-    <p style="font-size:13px;color:#6b6b6b;max-width:520px;margin:0 auto 40px;line-height:1.7">Growth continues. New colorways, new cuts. Be first to access — 50 pieces only.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1000px;margin:0 auto">
-      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="/assets/drop002-1.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
-      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="/assets/drop002-2.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
-      <div style="aspect-ratio:4/5;background:#f5f5f5;border:1px solid #e5e5e5;overflow:hidden"><img src="/assets/drop002-3.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
-    </div>
+<section class="drop-002">
+  <div class="eyebrow">Next Chapter</div>
+  <h2>DROP 002 —<br>COMING SOON</h2>
+  <p>Growth continues. New colorways, new cuts. Be first to access — 50 pieces only.</p>
+  <div class="drop-002-grid">
+    <div><img src="/assets/drop002-1.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
+    <div><img src="/assets/drop002-2.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
+    <div><img src="/assets/drop002-3.png" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"></div>
   </div>
 </section>
 
@@ -128,10 +152,10 @@ img{display:block;width:100%}
   <div class="wrap">
     <div><div class="brand">CRESCITA</div><div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div></div>
     <div><h4>Shop</h4><a href="/shop/">Drop 001 — 100 pieces</a><a href="/shop/">Cut & sewn in SA</a><a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a></div>
-    <div><h4>Follow</h4><div class="social"><a href="#">IG</a><a href="#">TT</a></div></div>
+    <div><h4>Follow</h4><div class="social"><a href="https://instagram.com/crescitaofficial" target="_blank">IG</a><a href="https://tiktok.com/@crescitaofficial" target="_blank">TT</a></div></div>
   </div>
   <div class="policies-row"><a href="/shipping-policy/">Shipping</a><a href="/return-policy/">Returns & Exchanges</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-service/">Terms of Service</a></div>
-  <div class="bottom small"><div>© 2026 CRESCITA. All rights reserved. Brand Strategy, Design & Digital by KINGLIS.</div><div><a href="https://thisiskinglis.com">thisiskinglis.com</a></div></div>
+  <div class="bottom small"><div>© 2026 CRESCITA. All rights reserved. Brand Strategy, Design & Digital by KINGLIS.</div><div><a href="https://thisiskinglis.com" target="_blank">thisiskinglis.com</a></div></div>
 </footer>
 
 </body>
