@@ -156,6 +156,17 @@ function addC(name){openSize(name||'ITEM');}
 function toggleCart(){const d=document.getElementById('cartDrawer');d.style.transform=d.style.transform==='translateX(0%)'?'translateX(100%)':'translateX(0%)';}
 function renderCart(){document.getElementById('c').innerText=cart.length;const list=document.getElementById('cartItems');const empty=document.getElementById('cartEmpty');if(cart.length===0){list.innerHTML='';empty.style.display='block';document.getElementById('cartTotal').innerText='R 0';return;}empty.style.display='none';list.innerHTML=cart.map((it,i)=>`<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #EAEAEA;font-size:10px"><span>${it.name} - ${it.size}</span><span>R ${it.price} <span onclick="removeItem(${i})" style="margin-left:10px;cursor:pointer;opacity:.5">✕</span></span></div>`).join('');document.getElementById('cartTotal').innerText='R '+(cart.length*1850).toLocaleString();}
 function removeItem(i){cart.splice(i,1);renderCart();}
+  function checkoutWA(){
+if(cart.length===0){alert('Your cart is empty');return;}
+let message = "Hi CRESCITA - DROP 001 ORDER%0A%0A";
+cart.forEach((it,i)=>{
+message += `${i+1}. ${it.name} - Size: ${it.size} - R${it.price}%0A`;
+});
+let total = cart.reduce((s,it)=>s+it.price,0);
+message += `%0ATOTAL: R${total}%0A%0AShipping details to follow.`;
+let url = `https://wa.me/27646554337?text=${message}`;
+window.open(url, "_blank");
+}
 </script>
 </body>
 </html>
