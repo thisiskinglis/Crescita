@@ -15,14 +15,13 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 .top-main{display:flex;justify-content:space-between;align-items:center;padding:18px 24px}
 .logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:18px}
 .center{font-weight:800;letter-spacing:.18em;font-size:10px;opacity:.6}
-.cart{background:#111;color:#fff;padding:9px 14px;font-size:10px;letter-spacing:.12em}
+.cart{background:#111;color:#fff;padding:9px 14px;font-size:10px;letter-spacing:.12em;cursor:pointer}
 .filters{display:flex;gap:24px;padding:12px 24px;overflow:auto;border-bottom:1px solid var(--line)}
 .filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.5}
 .wrap{max-width:1440px;margin:0 auto}
 .label-row{display:flex;justify-content:space-between;padding:32px 24px 12px}
 .label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800}
 .label-row span{font-size:9px;color:var(--muted)}
-/* PREMIUM BLACK RECTANGLE - NO GAPS */
 .hero,.hero-flip{margin:0 24px 40px;border:1px solid #111;display:grid;background:#fff;align-items:stretch}
 .hero{grid-template-columns:1.2fr .8fr}
 .hero-left{grid-row:1 / span 2;border-right:1px solid #111;display:flex}
@@ -30,7 +29,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 .hero-right{display:grid;grid-template-rows:1fr 1fr}
 .hero-right .imgbox{width:100%;height:100%}
 .hero-right .imgbox:first-child{border-bottom:1px solid #111}
-
 .hero-flip{grid-template-columns:.85fr 1.15fr}
 .hero-flip-left{border-right:1px solid #111;display:grid;grid-template-rows:1fr 1fr}
 .hero-flip-left .top-wide{border-bottom:1px solid #111;display:flex}
@@ -40,12 +38,11 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 .hero-flip-left .bottom-two .imgbox:first-child{border-right:1px solid #111}
 .hero-flip-right{display:flex}
 .hero-flip-right .imgbox{width:100%;height:100%;flex:1}
-
-.imgbox{position:relative;background:#F4F4F4;overflow:hidden}
+.imgbox{position:relative;background:#F4F4F4;overflow:hidden;cursor:pointer}
 .imgbox img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .overlay{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
 .tag{background:#fff;border:1px solid #111;padding:6px 10px;font-size:9px;letter-spacing:.12em;font-weight:700;text-transform:uppercase}
-.shopbtn{background:#111;color:#fff;padding:7px 12px;font-size:8px;letter-spacing:.12em;font-weight:700;text-transform:uppercase}
+.shopbtn{background:#111;color:#fff;padding:7px 12px;font-size:8px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;cursor:pointer}
 .split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
 .col{padding:0 24px 32px;border-right:1px solid var(--line)}
 .col:last-child{border-right:none}
@@ -60,6 +57,8 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 .sub{font-size:9px;color:var(--muted);margin-top:2px}
 .add{width:100%;margin-top:10px;background:#fff;border:1px solid #111;padding:11px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .add:hover{background:#111;color:#fff}
+.size-opt{border:1px solid #111;padding:12px;text-align:center;font-size:11px;font-weight:700;cursor:pointer}
+.size-opt.sel{background:#111;color:#fff}
 @media(max-width:900px){
 .hero,.hero-flip,.split{grid-template-columns:1fr}
 .hero-left,.hero-flip-left{border-right:none;border-bottom:1px solid #111}
@@ -70,58 +69,90 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 </head>
 <body>
 <div class="top">
-<div class="top-main"><a href="/" class="logo">CRESCITA</a><div class="center">SHOP DROP 001</div><a href="#" class="cart">CART (<span id="c">0</span>)</a></div>
+<div class="top-main"><a href="/" class="logo">CRESCITA</a><div class="center">SHOP DROP 001</div><div class="cart" onclick="toggleCart()">CART (<span id="c">0</span>)</div></div>
 <div class="filters"><a href="#men">MENS FULL SETS</a><a href="#womens">WOMENS FULL SETS</a><a href="#mj">MENS JACKETS</a><a href="#mb">MENS BOTTOMS</a><a href="#wj">WOMENS JACKETS</a><a href="#wb">WOMENS BOTTOMS</a></div>
 </div>
+
+<div id="cartDrawer" style="position:fixed;top:0;right:0;width:380px;max-width:90vw;height:100vh;background:#fff;border-left:1px solid #111;z-index:100;transform:translateX(100%);transition:.3s ease;padding:24px;overflow:auto">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px"><h3 style="font-size:11px;letter-spacing:.18em">CART</h3><div onclick="toggleCart()" style="cursor:pointer;font-size:18px">✕</div></div>
+<div id="cartItems"></div>
+<div id="cartEmpty" style="font-size:10px;color:#8A8A8A;margin-top:40px">YOUR CART IS EMPTY</div>
+<div style="margin-top:24px;border-top:1px solid #EAEAEA;padding-top:16px"><div style="display:flex;justify-content:space-between;font-size:10px;font-weight:700"><span>TOTAL</span><span id="cartTotal">R 0</span></div><button style="width:100%;margin-top:12px;background:#111;color:#fff;padding:14px;border:1px solid #111;font-size:10px;letter-spacing:.14em">CHECKOUT</button></div>
+</div>
+
+<div id="sizeModal" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center">
+<div style="background:#fff;border:1px solid #111;padding:24px;width:340px;max-width:90vw">
+<div style="display:flex;justify-content:space-between"><h3 id="modalName" style="font-size:10px;letter-spacing:.14em;font-weight:800">SELECT SIZE</h3><div onclick="closeSize()" style="cursor:pointer">✕</div></div>
+<div style="font-size:9px;color:#8A8A8A;margin-top:6px">S - XL</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0">
+<div class="size-opt" onclick="pickSize(this,'S')">S</div>
+<div class="size-opt" onclick="pickSize(this,'M')">M</div>
+<div class="size-opt" onclick="pickSize(this,'L')">L</div>
+<div class="size-opt" onclick="pickSize(this,'XL')">XL</div>
+</div>
+<button onclick="confirmAdd()" style="width:100%;background:#111;color:#fff;padding:12px;border:1px solid #111;font-size:10px;letter-spacing:.14em">ADD TO CART</button>
+</div>
+</div>
+
 <div class="wrap">
 <div class="label-row" id="men"><h2>MEN / 001</h2><span>FULL TRACKSUITS</span></div>
 <div class="hero">
-<div class="hero-left"><div class="imgbox" onclick="addC()" style="cursor:pointer"><img src="/assets/mens-set-black.png"><div class="overlay"><div class="tag">GROWTH BLACK / 001 - S-XL</div><div class="shopbtn" onclick="addC()">ADD TO CART →</div></div></div></div>
+<div class="hero-left"><div class="imgbox" onclick="addC('GROWTH BLACK SET - MENS')"><img src="/assets/mens-set-black.png"><div class="overlay"><div class="tag">GROWTH BLACK / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
 <div class="hero-right">
-<div class="imgbox" onclick="addC()" style="cursor:pointer"><img src="/assets/mens-set-white.png"><div class="overlay"><div class="tag">CREAM / 001 - S-XL</div><div class="shopbtn" onclick="addC()">ADD TO CART →</div></div></div>
-<div class="imgbox" onclick="addC()" style="cursor:pointer"><img src="/assets/mens-set-blue.png"><div class="overlay"><div class="tag">BLUE / 001 - S-XL</div><div class="shopbtn" onclick="addC()">ADD TO CART →</div></div></div>
+<div class="imgbox" onclick="addC('CREAM SET - MENS')"><img src="/assets/mens-set-white.png"><div class="overlay"><div class="tag">CREAM / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox" onclick="addC('BLUE SET - MENS')"><img src="/assets/mens-set-blue.png"><div class="overlay"><div class="tag">BLUE / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div>
 </div>
 </div>
 <div class="split">
 <div class="col" id="mj"><div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
-<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH JACKET - BLACK - MENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH JACKET - CREAM - MENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE JACKET - BLUE - MENS')">ADD TO CART</button></div>
 </div></div>
 <div class="col" id="mb"><div class="small-head"><h3>PANTS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
-<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH PANTS - BLACK - MENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">CREAM / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH PANTS - CREAM - MENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE PANTS - BLUE - MENS')">ADD TO CART</button></div>
 </div></div>
 </div>
 <div class="label-row" id="womens"><h2>WOM / 001</h2><span>FULL TRACKSUITS</span></div>
 <div class="hero-flip">
 <div class="hero-flip-left">
-<div class="top-wide"><div class="imgbox"><img src="/assets/womens-set-white.png"><div class="overlay"><div class="tag">FAITH CREAM / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
+<div class="top-wide"><div class="imgbox" onclick="addC('FAITH CREAM SET - WOMENS')"><img src="/assets/womens-set-white.png"><div class="overlay"><div class="tag">FAITH CREAM / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
 <div class="bottom-two">
-<div class="imgbox"><img src="/assets/womens-set-black.png"><div class="overlay"><div class="tag">GROWTH BLACK / 001</div><div class="shopbtn">SHOP →</div></div></div>
-<div class="imgbox"><img src="/assets/womens-set-blue.png"><div class="overlay"><div class="tag">PURPOSE BLUE / 001</div><div class="shopbtn">SHOP →</div></div></div>
+<div class="imgbox" onclick="addC('GROWTH BLACK SET - WOMENS')"><img src="/assets/womens-set-black.png"><div class="overlay"><div class="tag">GROWTH BLACK / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox" onclick="addC('PURPOSE BLUE SET - WOMENS')"><img src="/assets/womens-set-blue.png"><div class="overlay"><div class="tag">PURPOSE BLUE / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div>
 </div>
 </div>
-<div class="hero-flip-right"><div class="imgbox"><img src="/assets/womens-set-pink.png"><div class="overlay"><div class="tag">GRACE PINK / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
+<div class="hero-flip-right"><div class="imgbox" onclick="addC('GRACE PINK SET - WOMENS')"><img src="/assets/womens-set-pink.png"><div class="overlay"><div class="tag">GRACE PINK / 001 - S-XL</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
 </div>
 <div class="split">
 <div class="col" id="wj"><div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
-<div class="card"><div class="imgbox"><img src="/assets/womens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/womens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/womens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/womens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH JACKET - BLACK - WOMENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/womens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH JACKET - CREAM - WOMENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/womens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE JACKET - BLUE - WOMENS')">ADD TO CART</button></div>
 </div></div>
 <div class="col" id="wb"><div class="small-head"><h3>PANTS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
-<div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">WHITE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH PANTS - BLACK - WOMENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">WHITE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH PANTS - WHITE - WOMENS')">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE PANTS - BLUE - WOMENS')">ADD TO CART</button></div>
 </div></div>
 </div>
 </div>
-<script>let n=0;function addC(){n++;document.getElementById('c').innerText=n}</script>
+<script>
+let cart=[]; let pendingProduct=null; let pendingSize=null;
+function openSize(name){pendingProduct=name;pendingSize=null;document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));document.getElementById('modalName').innerText=name;document.getElementById('sizeModal').style.display='flex';}
+function closeSize(){document.getElementById('sizeModal').style.display='none';}
+function pickSize(el,size){document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');pendingSize=size;}
+function confirmAdd(){if(!pendingSize){alert('Pick a size');return;}cart.push({name:pendingProduct,size:pendingSize,price:1850});closeSize();renderCart();}
+function addC(name){openSize(name||'ITEM');}
+function toggleCart(){const d=document.getElementById('cartDrawer');d.style.transform=d.style.transform==='translateX(0%)'?'translateX(100%)':'translateX(0%)';}
+function renderCart(){document.getElementById('c').innerText=cart.length;const list=document.getElementById('cartItems');const empty=document.getElementById('cartEmpty');if(cart.length===0){list.innerHTML='';empty.style.display='block';document.getElementById('cartTotal').innerText='R 0';return;}empty.style.display='none';list.innerHTML=cart.map((it,i)=>`<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #EAEAEA;font-size:10px"><span>${it.name} - ${it.size}</span><span>R ${it.price} <span onclick="removeItem(${i})" style="margin-left:10px;cursor:pointer;opacity:.5">✕</span></span></div>`).join('');document.getElementById('cartTotal').innerText='R '+(cart.length*1850).toLocaleString();}
+function removeItem(i){cart.splice(i,1);renderCart();}
+</script>
 </body>
 </html>
