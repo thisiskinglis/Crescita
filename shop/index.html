@@ -7,80 +7,57 @@
 <style>
 :root{--line:#E8E8E8;--muted:#8A8A8A}
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{background:#FFFFFF !important}
+html,body{background:#fff !important}
 body{color:#111;font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none} img{width:100%;display:block}
-
-.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+a{color:inherit;text-decoration:none} img{width:100%;display:block;height:100%;object-fit:cover}
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.98);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top-main{display:flex;justify-content:space-between;align-items:center;padding:14px 24px}
 .logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:18px}
 .center{font-weight:800;letter-spacing:.18em;font-size:11px}
 .cart{border:1px solid #111;background:#111;color:#fff;padding:8px 14px;font-size:10px;letter-spacing:.14em}
 .filters{display:flex;gap:22px;padding:10px 24px;overflow:auto;white-space:nowrap;border-top:1px solid var(--line)}
-.filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.55}
-.filters a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
-
+.filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
 .wrap{max-width:1440px;margin:0 auto}
-.label-row{display:flex;justify-content:space-between;align-items:center;padding:18px 24px 14px}
-.label-row h2{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:800}
-.label-row span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.label-row{display:flex;justify-content:space-between;padding:20px 24px 12px}
+.label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800;text-transform:uppercase}
+.label-row span{font-size:9px;color:var(--muted);text-transform:uppercase}
 
-/* EDITORIAL HERO - FIXED - NO GAP */
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;padding:0 32px 24px;background:#fff;height:640px;align-items:stretch}
-.hero-left{height:100%}
-.hero-left > .imgbox{height:100%}
-.hero-right{display:grid;grid-template-rows:1fr 1fr;gap:12px;height:100%}
-.hero-right > .imgbox{height:100%}
+/* HERO - NO FIXED HEIGHT */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;padding:0 24px 24px}
+.hero-right{display:grid;gap:12px}
+.imgbox{position:relative;background:#F2F2F2;border:1px solid var(--line);overflow:hidden;aspect-ratio:4/5}
+.overlay{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:6px}
+.tag{background:#fff;border:1px solid #111;padding:6px 10px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.shopbtn{background:#111;color:#fff;border:1px solid #111;padding:6px 10px;font-size:8px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;width:fit-content}
 
-.imgbox{position:relative;background:#F2F2F2;border:1px solid var(--line);overflow:hidden}
-.imgbox img{width:100%;height:100%;object-fit:cover;object-position:center top;background:#F2F2F2}
-.overlay{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
-.tag{background:#fff;border:1px solid #111;padding:6px 10px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;display:inline-block}
-.shopbtn{background:#111;color:#fff;border:1px solid #111;padding:7px 10px;font-size:8px;letter-spacing:.14em;text-transform:uppercase;display:inline-block;width:fit-content;font-weight:700}
-
-/* SPLIT ROW - JACKETS / BOTTOMS - FIX OVERLAP */
-.split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);background:#fff}
-.split .col{padding:0 32px 32px;border-right:1px solid var(--line)}
+/* JACKETS / PANTS */
+.split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.split .col{padding:0 24px 24px;border-right:1px solid var(--line)}
 .split .col:last-child{border-right:none}
-.small-head{display:flex;justify-content:space-between;align-items:center;padding:18px 0 12px}
-.small-head h3{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
-.small-head span{font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-
+.small-head{display:flex;justify-content:space-between;padding:16px 0 12px}
+.small-head h3{font-size:10px;letter-spacing:.18em;font-weight:800;text-transform:uppercase}
+.small-head span{font-size:8px;color:var(--muted);text-transform:uppercase}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .card{background:#fff}
-.card > .imgbox{aspect-ratio:4/5;height:auto !important} /* <-- THIS FIXES YOUR OVERLAP */
+.card .imgbox{aspect-ratio:4/5}
 .meta{display:flex;justify-content:space-between;padding:8px 0 4px}
-.name{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.2}
+.name{font-size:10px;font-weight:700;text-transform:uppercase}
 .price{font-size:10px;font-weight:700}
-.sub{font-size:9px;color:var(--muted);margin-top:2px}
-.add{width:100%;margin-top:10px;background:#fff;border:1px solid #111;padding:10px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.sub{font-size:9px;color:var(--muted)}
+.add{width:100%;margin-top:8px;background:#fff;border:1px solid #111;padding:10px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .add:hover{background:#111;color:#fff}
 
-/* WOM HERO FLIPPED - REDUCED TO MATCH */
-.hero-flip{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;padding:0 32px 24px;background:#fff;height:640px}
-.hero-flip-left{display:grid;grid-template-rows:1fr 1fr;gap:12px;height:100%}
-.hero-flip-left .top-wide{height:100%}
-.hero-flip-left .top-wide .imgbox{height:100%}
-.hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%}
-.hero-flip-left .bottom-two .imgbox{height:100%}
-.hero-flip-right{height:100%}
-.hero-flip-right .imgbox{height:100%}
+/* WOMEN FLIP - SAME LOGIC */
+.hero-flip{display:grid;grid-template-columns:.9fr 1.1fr;gap:12px;padding:0 24px 24px}
+.hero-flip-left{display:grid;gap:12px}
+.hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 
-@media(max-width:1000px){
-.hero,.hero-flip,.split{grid-template-columns:1fr;height:auto}
-.hero-left,.hero-right,.hero-flip-left,.hero-flip-right{height:auto}
-.hero-left > .imgbox,.hero-flip-right .imgbox{height:520px !important}
-.hero-right > .imgbox,.hero-flip-left .imgbox{height:380px !important}
+@media(max-width:900px){
+.hero,.hero-flip,.split{grid-template-columns:1fr}
 .split .col{border-right:none;border-bottom:1px solid var(--line)}
-.grid3,.grid4{grid-template-columns:repeat(2,1fr)}
+.grid3{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:600px){
-.grid3,.grid4{grid-template-columns:1fr}
-.top-main{padding:12px 16px}
-.label-row,.small-head{padding-left:16px;padding-right:16px}
-.hero,.hero-flip,.split .col{padding-left:16px;padding-right:16px}
-}
+@media(max-width:600px){.grid3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -92,68 +69,55 @@ a{color:inherit;text-decoration:none} img{width:100%;display:block}
 <div class="wrap">
 <div class="label-row" id="men"><h2>MEN / 001</h2><span>FULL TRACKSUITS</span></div>
 <div class="hero">
-<div class="hero-left">
-<div class="imgbox"><img src="/assets/mens-set-black.png" alt="Growth Black"><div class="overlay"><div class="tag">GROWTH<br>BLACK / 001</div><div class="shopbtn">SHOP →</div></div></div>
-</div>
+<div class="hero-left"><div class="imgbox"><img src="/assets/mens-set-black.png"><div class="overlay"><div class="tag">GROWTH BLACK / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
 <div class="hero-right">
-<div class="imgbox"><img src="/assets/mens-set-white.png" style="object-position:center 20%" alt="Cream"><div class="overlay"><div class="tag">CREAM / 001</div><div class="shopbtn">SHOP →</div></div></div>
-<div class="imgbox"><img src="/assets/mens-set-blue.png" alt="Blue"><div class="overlay"><div class="tag">BLUE / 001</div><div class="shopbtn">SHOP →</div></div></div>
+<div class="imgbox"><img src="/assets/mens-set-white.png"><div class="overlay"><div class="tag">CREAM / 001</div><div class="shopbtn">SHOP →</div></div></div>
+<div class="imgbox"><img src="/assets/mens-set-blue.png"><div class="overlay"><div class="tag">BLUE / 001</div><div class="shopbtn">SHOP →</div></div></div>
 </div>
 </div>
 
 <div class="split">
-<div class="col" id="mj">
-<div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
+<div class="col" id="mj"><div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
-<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><a class="quickadd">QUICK ADD</a><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><a class="quickadd">QUICK ADD</a><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><a class="quickadd">QUICK ADD</a><button class="add" onclick="addC()">ADD TO CART</button></div>
-</div>
-</div>
-<div class="col" id="mb">
-<div class="small-head"><h3>PANTS / 001</h3><span>SOLD AS SEPARATES</span></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+</div></div>
+<div class="col" id="mb"><div class="small-head"><h3>PANTS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
-<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><a class="quickadd">QUICK ADD</a><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><a class="quickadd">QUICK ADD</a><button class="add" onclick="addC()">ADD TO CART</button></div>
-<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><a class="quickadd">QUICK ADD</a><button class="add" onclick="addC()">ADD TO CART</button></div>
-</div>
-</div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+<div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+</div></div>
 </div>
 
 <div class="label-row" id="womens"><h2>WOM / 001</h2><span>FULL TRACKSUITS</span></div>
 <div class="hero-flip">
 <div class="hero-flip-left">
-<div class="top-wide"><div class="imgbox"><img src="/assets/womens-set-white.png" alt="Faith"><div class="overlay"><div class="tag">FAITH<br>CREAM / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
+<div class="top-wide"><div class="imgbox"><img src="/assets/womens-set-white.png"><div class="overlay"><div class="tag">FAITH CREAM / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
 <div class="bottom-two">
-<div class="imgbox"><img src="/assets/womens-set-black.png" alt="Growth"><div class="overlay"><div class="tag">GROWTH<br>BLACK / 001</div><div class="shopbtn">SHOP →</div></div></div>
-<div class="imgbox"><img src="/assets/womens-set-blue.png" alt="Purpose"><div class="overlay"><div class="tag">PURPOSE<br>BLUE / 001</div><div class="shopbtn">SHOP →</div></div></div>
+<div class="imgbox"><img src="/assets/womens-set-black.png"><div class="overlay"><div class="tag">GROWTH BLACK / 001</div><div class="shopbtn">SHOP →</div></div></div>
+<div class="imgbox"><img src="/assets/womens-set-blue.png"><div class="overlay"><div class="tag">PURPOSE BLUE / 001</div><div class="shopbtn">SHOP →</div></div></div>
 </div>
 </div>
-<div class="hero-flip-right">
-<div class="imgbox"><img src="/assets/womens-set-pink.png" style="object-position:center 20%" alt="Grace Pink"><div class="overlay"><div class="tag">GRACE<br>PINK / 001</div><div class="shopbtn">SHOP →</div></div></div>
-</div>
+<div class="hero-flip-right"><div class="imgbox"><img src="/assets/womens-set-pink.png"><div class="overlay"><div class="tag">GRACE PINK / 001</div><div class="shopbtn">SHOP →</div></div></div></div>
 </div>
 
 <div class="split">
-<div class="col" id="wj">
-<div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
+<div class="col" id="wj"><div class="small-head"><h3>JACKETS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
-</div>
-</div>
-<div class="col" id="wb">
-<div class="small-head"><h3>PANTS / 001</h3><span>SOLD AS SEPARATES</span></div>
+</div></div>
+<div class="col" id="wb"><div class="small-head"><h3>PANTS / 001</h3><span>SOLD AS SEPARATES</span></div>
 <div class="grid3">
 <div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">WHITE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XXL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC()">ADD TO CART</button></div>
+</div></div>
 </div>
 </div>
-</div>
-</div>
-
 <script>let n=0;function addC(){n++;document.getElementById('c').innerText=n}</script>
 </body>
 </html>
