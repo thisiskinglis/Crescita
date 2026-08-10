@@ -11,218 +11,80 @@
 html,body{background:#fff}
 body{color:#111;font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
-.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .top-main{display:flex;justify-content:space-between;align-items:center;padding:18px 24px}
-.logo{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:18px}
-.center{font-weight:800;letter-spacing:.18em;font-size:10px;opacity:.6}
+.logo{font-family:'Orbitron',sans-serif !important;font-weight:700 !important;letter-spacing:.14em !important;font-size:20px !important;text-transform:uppercase !important;color:#111}
 .cart{background:#111;color:#fff;padding:9px 14px;font-size:10px;letter-spacing:.12em;cursor:pointer}
-.filters{display:flex;gap:24px;padding:12px 24px;overflow:auto;border-bottom:1px solid var(--line)}
-.filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.5}
+.drop-ticker{width:100%;height:28px;background:#0A0A0A;color:#fff;overflow:hidden;display:flex;align-items:center}
+.marquee-track{display:flex;white-space:nowrap;animation:crescita-marquee 22s linear infinite}
+.marquee-track span{font-size:9px;letter-spacing:.18em;font-weight:500;text-transform:uppercase;padding-right:24px}
+@keyframes crescita-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.filters{display:flex;gap:24px;padding:12px 24px;overflow:auto;border-bottom:1px solid var(--line);background:#fff}
+.filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;white-space:nowrap}
 .wrap{max-width:1440px;margin:0 auto}
 .label-row{display:flex;justify-content:space-between;padding:32px 24px 12px}
 .label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800}
-.label-row span{font-size:9px;color:var(--muted)}
 .hero,.hero-flip{margin:0 24px 32px;border:1px solid #111;display:grid;background:#fff;align-items:stretch}
 .hero{grid-template-columns:1.2fr .8fr}
 .hero-left{grid-row:1 / span 2;border-right:1px solid #111;display:flex}
-.hero-left .imgbox{width:100%;height:520px;flex:1}
+.hero-left .imgbox{height:520px;flex:1}
 .hero-right{display:grid;grid-template-rows:260px 260px}
-.hero-right .imgbox{width:100%;height:260px}
+.hero-right .imgbox{height:260px}
 .hero-right .imgbox:first-child{border-bottom:1px solid #111}
-
 .hero-flip{grid-template-columns:.85fr 1.15fr}
 .hero-flip-left{border-right:1px solid #111;display:grid;grid-template-rows:260px 260px}
 .hero-flip-left .top-wide{border-bottom:1px solid #111;display:flex}
-.hero-flip-left .top-wide .imgbox{width:100%;height:260px;flex:1}
+.hero-flip-left .top-wide .imgbox{height:260px;flex:1}
 .hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr}
-.hero-flip-left .bottom-two .imgbox{width:100%;height:260px}
+.hero-flip-left .bottom-two .imgbox{height:260px}
 .hero-flip-left .bottom-two .imgbox:first-child{border-right:1px solid #111}
 .hero-flip-right{display:flex}
-.hero-flip-right .imgbox{width:100%;height:520px;flex:1}
+.hero-flip-right .imgbox{height:520px;flex:1}
 .imgbox{position:relative;background:#F4F4F4;overflow:hidden;cursor:pointer}
-.imgbox img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.overlay{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
-.tag{background:#fff;border:1px solid #111;padding:6px 10px;font-size:9px;letter-spacing:.12em;font-weight:700;text-transform:uppercase}
-.shopbtn{background:#111;color:#fff;padding:7px 12px;font-size:8px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;cursor:pointer}
+.imgbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.overlay{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;z-index:2}
+.tag{background:transparent !important;border:none !important;padding:0 !important;font-size:10px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.tag.light{color:#111} .tag.dark{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.shopbtn{background:#111;color:#fff;padding:8px 12px;font-size:8px;letter-spacing:.12em;font-weight:700;border:1px solid #111}
 .split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
 .col{padding:0 24px 32px;border-right:1px solid var(--line)}
 .col:last-child{border-right:none}
-.small-head{display:flex;justify-content:space-between;padding:18px 0 14px}
+.small-head{padding:18px 0 14px}
 .small-head h3{font-size:10px;letter-spacing:.18em;font-weight:800}
-.small-head span{font-size:8px;color:var(--muted)}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card .imgbox{aspect-ratio:4/5;border:1px solid var(--line);background:#F7F7F7}
+.card .imgbox{aspect-ratio:4/5;border:1px solid var(--line)}
 .meta{display:flex;justify-content:space-between;padding:10px 0 4px}
 .name{font-size:10px;font-weight:700;text-transform:uppercase}
 .price{font-size:10px}
-.sub{font-size:9px;color:var(--muted);margin-top:2px}
+.sub{font-size:9px;color:var(--muted)}
 .add{width:100%;margin-top:10px;background:#fff;border:1px solid #111;padding:11px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-.add:hover{background:#111;color:#fff}
 .size-opt{border:1px solid #111;padding:12px;text-align:center;font-size:11px;font-weight:700;cursor:pointer}
 .size-opt.sel{background:#111;color:#fff}
-@media(max-width:900px){
-.hero,.hero-flip,.split{grid-template-columns:1fr}
-.hero-left,.hero-flip-left{border-right:none;border-bottom:1px solid #111}
-.grid3{grid-template-columns:repeat(2,1fr)}
-}
+@media(max-width:900px){.hero,.hero-flip,.split{grid-template-columns:1fr}.hero-left,.hero-flip-left{border-right:none;border-bottom:1px solid #111}.grid3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.grid3{grid-template-columns:1fr}}
-  /* KILL THE WHITE BOX - title is just text now */
-.imgbox .tag {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-.tag { font-size:10px; letter-spacing:.14em; font-weight:700; }
-.tag.light { color:#111; }
-.tag.dark { color:#fff; text-shadow:0 1px 10px rgba(0,0,0,.5); }
-
-/* FIX GHOSTING - video covers image completely */
-.hero-flip-right .imgbox { position:relative; overflow:hidden; }
-.hero-flip-right .imgbox img,
-.hero-flip-right .imgbox video {
-  position:absolute; inset:0;
-  width:100%; height:100%; object-fit:cover;
-}
-.hero-flip-right .imgbox .fallback-img { opacity:0; } /* hide image once video loads */
-.hero-flip-right .imgbox video { opacity:1; }
-
-.logo{
-  font-family:'Orbitron',sans-serif !important;
-  font-weight:700 !important;
-  letter-spacing:.14em !important;
-  font-size:20px !important;
-  text-transform:uppercase !important;
-  text-decoration:none;
-  color:#111;
-}
-
-/* FOOTER - MATCHES HOMEPAGE */
-.footer{
-  background:#fff;
-  border-top:1px solid #EAEAEA;
-  padding:56px 32px 28px;
-  margin-top:80px;
-}
-.footer .wrap{
-  max-width:1300px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1.6fr 1fr 1fr;
-  gap:40px;
-  text-align:left;
-}
-.footer .brand{
-  font-family:'Orbitron',sans-serif;
-  font-weight:700;
-  letter-spacing:.14em;
-  font-size:16px;
-  margin-bottom:12px;
-}
-.footer .muted{
-  font-size:12px;
-  line-height:1.6;
-  opacity:.6;
-  max-width:320px;
-}
-.footer h4{
-  font-size:10px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  font-weight:700;
-  margin-bottom:16px;
-}
-.footer a{
-  display:block;
-  font-size:11px;
-  text-decoration:none;
-  color:#111;
-  margin-bottom:8px;
-  opacity:.7;
-}
-.footer a:hover{opacity:1}
-.footer .social{display:flex;gap:16px}
-.footer .social a{display:inline-block}
-.policies-row{
-  max-width:1300px;
-  margin:40px auto 0;
-  padding-top:24px;
-  border-top:1px solid #EAEAEA;
-  display:flex;
-  gap:24px;
-}
-.policies-row a{
-  font-size:10px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  display:inline-block;
-}
-.footer .bottom{
-  max-width:1300px;
-  margin:24px auto 0;
-  display:flex;
-  justify-content:space-between;
-  opacity:.4;
-  font-size:10px;
-}
-.footer .bottom a{font-size:10px;display:inline-block;opacity:1}
-
-@media(max-width:800px){
-  .footer .wrap{grid-template-columns:1fr;gap:32px}
-  .footer .bottom{flex-direction:column;gap:8px}
-}
-  .drop-ticker {
-  width: 100%;
-  height: 28px;
-  background: #0A0A0A;
-  color: #fff;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 5;
-}
-
-.marquee-track {
-  display: flex;
-  white-space: nowrap;
-  will-change: transform;
-  animation: crescita-marquee 22s linear infinite;
-}
-
-.marquee-track span {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding-right: 20px;
-}
-
-@keyframes crescita-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-  .footer {
-  display: block !important;
-  visibility: visible !important;
-  position: relative !important;
-  z-index: 1 !important;
-  transform: none !important;
-}
+.footer{background:#fff;border-top:1px solid #EAEAEA;padding:56px 32px 28px;margin-top:80px}
+.footer .wrap{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+.footer .brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:16px;margin-bottom:12px}
+.footer .muted{font-size:12px;line-height:1.6;opacity:.6;max-width:320px}
+.footer h4{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;margin-bottom:16px}
+.footer a{display:block;font-size:11px;margin-bottom:8px;opacity:.7}
+.policies-row{max-width:1300px;margin:40px auto 0;padding-top:24px;border-top:1px solid #EAEAEA;display:flex;gap:24px;flex-wrap:wrap}
+.policies-row a{font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.footer .bottom{max-width:1300px;margin:24px auto 0;display:flex;justify-content:space-between;opacity:.4;font-size:10px}
 </style>
 </head>
 <body>
+
 <div class="top">
-<div class="top-main"><a href="/" class="logo">CRESCITA</a><div class="center"></div><div class="cart" onclick="toggleCart()">CART (<span id="c">0</span>)</div></div>
-<!-- TICKER: sits directly under nav bar -->
-<div class="drop-ticker">
-  <div class="marquee-track">
-    <span>• &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; </span>
-    <span aria-hidden="true">• &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; </span>
-    <span aria-hidden="true">• &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; </span>
-    <span aria-hidden="true">• &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; </span>
+  <div class="top-main"><a href="/" class="logo">CRESCITA</a><div class="cart" onclick="toggleCart()">CART (<span id="c">0</span>)</div></div>
+  <div class="drop-ticker">
+    <div class="marquee-track">
+      <span>• &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp;</span>
+      <span aria-hidden="true">• &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp; DROP 001 — FAITH • PURPOSE • GROWTH • GRACE • CRESCITA &nbsp; • &nbsp;</span>
+    </div>
   </div>
+  <div class="filters"><a href="#men">MENS FULL SETS</a><a href="#womens">WOMENS FULL SETS</a><a href="#mj">MENS JACKETS</a><a href="#mb">MENS BOTTOMS</a><a href="#wj">WOMENS JACKETS</a><a href="#wb">WOMENS BOTTOMS</a></div>
 </div>
 
 <div id="cartDrawer" style="position:fixed;top:0;right:0;width:380px;max-width:90vw;height:100vh;background:#fff;border-left:1px solid #111;z-index:100;transform:translateX(100%);transition:.3s ease;padding:24px;overflow:auto">
@@ -235,7 +97,6 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 <div id="sizeModal" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center">
 <div style="background:#fff;border:1px solid #111;padding:24px;width:340px;max-width:90vw">
 <div style="display:flex;justify-content:space-between"><h3 id="modalName" style="font-size:10px;letter-spacing:.14em;font-weight:800">SELECT SIZE</h3><div onclick="closeSize()" style="cursor:pointer">✕</div></div>
-<div style="font-size:9px;color:#8A8A8A;margin-top:6px">S - XL</div>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0">
 <div class="size-opt" onclick="pickSize(this,'S')">S</div>
 <div class="size-opt" onclick="pickSize(this,'M')">M</div>
@@ -249,52 +110,54 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 <div class="wrap">
 <div class="label-row" id="men"><h2>MEN / 001</h2><span>FULL TRACKSUITS — R3500</span></div>
 <div class="hero">
-<div class="hero-left"><div class="imgbox" onclick="addC('GROWTH BLACK SET - MENS')"><img src="/assets/mens-set-black.png"><div class="overlay"><div class="tag">GROWTH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
+<div class="hero-left"><div class="imgbox dark" onclick="addC('GROWTH BLACK SET - MENS')"><img src="/assets/mens-set-black.png"><div class="overlay"><div class="tag dark">GROWTH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
 <div class="hero-right">
-<div class="imgbox" onclick="addC('CREAM SET - MENS')"><img src="/assets/mens-set-white.png"><div class="overlay"><div class="tag">FAITH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
-<div class="imgbox" onclick="addC('BLUE SET - MENS')"><img src="/assets/mens-set-blue.png"><div class="overlay"><div class="tag">PURPOSE — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox light" onclick="addC('CREAM SET - MENS')"><img src="/assets/mens-set-white.png"><div class="overlay"><div class="tag light">FAITH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox light" onclick="addC('BLUE SET - MENS')"><img src="/assets/mens-set-blue.png"><div class="overlay"><div class="tag light">PURPOSE — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
 </div>
 </div>
+
 <div class="split">
-<div class="col" id="mj"><div class="small-head"><h3>JACKETS / 001</h3><span></span></div>
+<div class="col" id="mj"><div class="small-head"><h3>JACKETS / 001</h3></div>
 <div class="grid3">
 <div class="card"><div class="imgbox"><img src="/assets/mens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH JACKET - BLACK - MENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/mens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH JACKET - CREAM - MENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/mens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE JACKET - BLUE - MENS')">ADD TO CART</button></div>
 </div></div>
-<div class="col" id="mb"><div class="small-head"><h3>PANTS / 001</h3><span></span></div>
+<div class="col" id="mb"><div class="small-head"><h3>PANTS / 001</h3></div>
 <div class="grid3">
 <div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH PANTS - BLACK - MENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">CREAM / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH PANTS - CREAM - MENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/mens-bottoms-blue.png"></div><div class="meta"><div><div class="name">PURPOSE PANTS</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE PANTS - BLUE - MENS')">ADD TO CART</button></div>
 </div></div>
 </div>
+
 <div class="label-row" id="womens"><h2>WOM / 001</h2><span>FULL TRACKSUITS — R3500</span></div>
 <div class="hero-flip">
 <div class="hero-flip-left">
-<div class="top-wide"><div class="imgbox" onclick="addC('FAITH CREAM SET - WOMENS')"><img src="/assets/womens-set-white.png"><div class="overlay"><div class="tag">FAITH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
+<div class="top-wide"><div class="imgbox light" onclick="addC('FAITH CREAM SET - WOMENS')"><img src="/assets/womens-set-white.png"><div class="overlay"><div class="tag light">FAITH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
 <div class="bottom-two">
-<div class="imgbox" onclick="addC('GROWTH BLACK SET - WOMENS')"><img src="/assets/womens-set-black.png"><div class="overlay"><div class="tag">GROWTH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
-<div class="imgbox" onclick="addC('PURPOSE BLUE SET - WOMENS')"><img src="/assets/womens-set-blue.png"><div class="overlay"><div class="tag">PURPOSE — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox dark" onclick="addC('GROWTH BLACK SET - WOMENS')"><img src="/assets/womens-set-black.png"><div class="overlay"><div class="tag dark">GROWTH — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox light" onclick="addC('PURPOSE BLUE SET - WOMENS')"><img src="/assets/womens-set-blue.png"><div class="overlay"><div class="tag light">PURPOSE — R3500</div><div class="shopbtn">ADD TO CART →</div></div></div>
 </div>
 </div>
 <div class="hero-flip-right">
-  <div class="imgbox light" onclick="addC('GRACE PINK SET - WOMENS')">
-    <video autoplay muted loop playsinline poster="/assets/womens-set-pink.png">
-      <source src="/assets/womens-pink-vid.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"><div class="tag light">GRACE — R3500</div><div class="shopbtn">ADD TO CART →</div></div>
-  </div>
+<div class="imgbox light" onclick="addC('GRACE PINK SET - WOMENS')">
+<video autoplay muted loop playsinline preload="metadata" poster="/assets/womens-set-pink.png"><source src="/assets/womens-pink-vid.mp4" type="video/mp4"></video>
+<div class="overlay"><div class="tag light">GRACE — R3500</div><div class="shopbtn">ADD TO CART →</div></div>
 </div>
+</div>
+</div>
+
 <div class="split">
-<div class="col" id="wj"><div class="small-head"><h3>JACKETS / 001</h3><span></span></div>
+<div class="col" id="wj"><div class="small-head"><h3>JACKETS / 001</h3></div>
 <div class="grid3" style="grid-template-columns:repeat(2,1fr)">
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-black.png"></div><div class="meta"><div><div class="name">GROWTH JACKET</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GROWTH JACKET - BLACK - WOMENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-white.png"></div><div class="meta"><div><div class="name">FAITH JACKET</div><div class="sub">CREAM / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('FAITH JACKET - CREAM - WOMENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-pink.png"></div><div class="meta"><div><div class="name">GRACE JACKET</div><div class="sub">PINK / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('GRACE JACKET - PINK - WOMENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-jacket-blue.png"></div><div class="meta"><div><div class="name">PURPOSE JACKET</div><div class="sub">BLUE / S-XL</div></div><div class="price">R 1,850</div></div><button class="add" onclick="addC('PURPOSE JACKET - BLUE - WOMENS')">ADD TO CART</button></div>
 </div></div>
-<div class="col" id="wb"><div class="small-head"><h3>PANTS / 001</h3><span></span></div>
+<div class="col" id="wb"><div class="small-head"><h3>PANTS / 001</h3></div>
 <div class="grid3" style="grid-template-columns:repeat(2,1fr)">
 <div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-black.png"></div><div class="meta"><div><div class="name">GROWTH PANTS</div><div class="sub">BLACK / S-XL</div></div><div class="price">R 1,750</div></div><button class="add" onclick="addC('GROWTH PANTS - BLACK - WOMENS')">ADD TO CART</button></div>
 <div class="card"><div class="imgbox"><img src="/assets/womens-bottoms-white.png"></div><div class="meta"><div><div class="name">FAITH PANTS</div><div class="sub">WHITE / S-XL</div></div><div class="price">R 1,750</div></div><button class="add" onclick="addC('FAITH PANTS - WHITE - WOMENS')">ADD TO CART</button></div>
@@ -303,65 +166,26 @@ img{display:block;width:100%;height:100%;object-fit:cover;object-position:center
 </div></div>
 </div>
 </div>
-</div>
+
 <script>
 let cart=[]; let pendingProduct=null; let pendingSize=null;
-function openSize(name){pendingProduct=name;pendingSize=null;document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));document.getElementById('modalName').innerText=name;document.getElementById('sizeModal').style.display='flex';}
+function getPrice(n){n=n.toLowerCase(); if(n.includes('set')) return 3500; if(n.includes('jacket')) return 1850; if(n.includes('pants')||n.includes('bottoms')) return n.includes('womens')?1750:1850; return 3500;}
+function openSize(name){pendingProduct=name;pendingSize=null;document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));document.getElementById('modalName').innerText=name+' — R'+getPrice(name);document.getElementById('sizeModal').style.display='flex';}
 function closeSize(){document.getElementById('sizeModal').style.display='none';}
-function pickSize(el,size){document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');pendingSize=size;}
-function confirmAdd(){if(!pendingSize){alert('Pick a size');return;}cart.push({name:pendingProduct,size:pendingSize,price:1850});closeSize();renderCart();}
-function addC(name){openSize(name||'ITEM');}
+function pickSize(el,s){document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');pendingSize=s;}
+function confirmAdd(){if(!pendingSize){alert('Pick a size');return;}cart.push({name:pendingProduct,size:pendingSize,price:getPrice(pendingProduct)});closeSize();renderCart();}
+function addC(n){openSize(n||'ITEM');}
 function toggleCart(){const d=document.getElementById('cartDrawer');d.style.transform=d.style.transform==='translateX(0%)'?'translateX(100%)':'translateX(0%)';}
-function renderCart(){document.getElementById('c').innerText=cart.length;const list=document.getElementById('cartItems');const empty=document.getElementById('cartEmpty');if(cart.length===0){list.innerHTML='';empty.style.display='block';document.getElementById('cartTotal').innerText='R 0';return;}empty.style.display='none';list.innerHTML=cart.map((it,i)=>`<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #EAEAEA;font-size:10px"><span>${it.name} - ${it.size}</span><span>R ${it.price} <span onclick="removeItem(${i})" style="margin-left:10px;cursor:pointer;opacity:.5">✕</span></span></div>`).join('');document.getElementById('cartTotal').innerText='R '+(cart.length*1850).toLocaleString();}
+function renderCart(){document.getElementById('c').innerText=cart.length;const list=document.getElementById('cartItems');const empty=document.getElementById('cartEmpty');if(cart.length===0){list.innerHTML='';empty.style.display='block';document.getElementById('cartTotal').innerText='R 0';return;}empty.style.display='none';list.innerHTML=cart.map((it,i)=>`<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #EAEAEA;font-size:10px"><span>${it.name} - ${it.size}</span><span>R ${it.price} <span onclick="removeItem(${i})" style="margin-left:10px;cursor:pointer;opacity:.5">✕</span></span></div>`).join('');document.getElementById('cartTotal').innerText='R '+(cart.reduce((s,it)=>s+it.price,0)).toLocaleString();}
 function removeItem(i){cart.splice(i,1);renderCart();}
-  function checkoutWA(){
-if(cart.length===0){alert('Your cart is empty');return;}
-let message = "Hi CRESCITA - DROP 001 ORDER%0A%0A";
-cart.forEach((it,i)=>{
-message += `${i+1}. ${it.name} - Size: ${it.size} - R${it.price}%0A`;
-});
-let total = cart.reduce((s,it)=>s+it.price,0);
-message += `%0ATOTAL: R${total}%0A%0AShipping details to follow.`;
-let url = `https://wa.me/27646554337?text=${message}`;
-window.open(url, "_blank");
-}
-  </script>
+function checkoutWA(){if(cart.length===0){alert('Your cart is empty');return;}let m="Hi CRESCITA - DROP 001 ORDER%0A%0A";cart.forEach((it,i)=>{m+=`${i+1}. ${it.name} - Size: ${it.size} - R${it.price}%0A`;});let t=cart.reduce((s,it)=>s+it.price,0);m+=`%0ATOTAL: R${t}%0A%0AShipping details to follow.`;window.open(`https://wa.me/27646554337?text=${m}`,"_blank");}
+</script>
+
 <footer class="footer">
-  <div class="wrap">
-    <div>
-      <div class="brand">CRESCITA</div>
-      <div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div>
-    </div>
-    <div>
-      <h4>Shop</h4>
-      <a href="/shop/">Drop 001 — 100 pieces</a>
-      <a href="/shop/">Cut & sewn in SA</a>
-      <a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a>
-    </div>
-    <div>
-      <h4>Follow</h4>
-      <div class="social" style="display:flex;gap:14px;align-items:center">
-        <a href="https://instagram.com/crescitaofficial" target="_blank" aria-label="Instagram" style="color:#111;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #EAEAEA;border-radius:50%">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"></circle></svg>
-        </a>
-        <a href="https://tiktok.com/@crescitaofficial" target="_blank" aria-label="TikTok" style="color:#111;display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #EAEAEA;border-radius:50%">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="policies-row">
-    <a href="/shipping-policy/">Shipping</a>
-    <a href="/return-policy/">Returns & Exchanges</a>
-    <a href="/privacy-policy/">Privacy Policy</a>
-    <a href="/terms-service/">Terms of Service</a>
-  </div>
-  <div class="bottom small">
-    <div>© 2026 CRESCITA. All rights reserved. Brand Strategy, Design & Digital by KINGLIS.</div>
-    <div><a href="https://thisiskinglis.com" target="_blank">thisiskinglis.com</a></div>
-  </div>
+  <div class="wrap"><div><div class="brand">CRESCITA</div><div class="muted">Luxury streetwear inspired by growth, faith and purpose.<br>Est. 2026 — Johannesburg / Worldwide</div></div><div><h4>Shop</h4><a href="/shop/">Drop 001 — 100 pieces</a><a href="/shop/">Cut & sewn in SA</a><a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a></div><div><h4>Follow</h4><div class="social" style="display:flex;gap:14px"><a href="https://instagram.com/crescitaofficial" target="_blank" style="border:1px solid #EAEAEA;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center">IG</a><a href="https://tiktok.com/@crescitaofficial" target="_blank" style="border:1px solid #EAEAEA;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center">TT</a></div></div></div>
+  <div class="policies-row"><a href="/shipping-policy/">Shipping</a><a href="/return-policy/">Returns & Exchanges</a><a href="/privacy-policy/">Privacy Policy</a><a href="/terms-service/">Terms of Service</a></div>
+  <div class="bottom small"><div>© 2026 CRESCITA. All rights reserved.</div><div><a href="https://thisiskinglis.com" target="_blank">thisiskinglis.com</a></div></div>
 </footer>
-</body>
-</html>
+
 </body>
 </html>
