@@ -51,6 +51,13 @@ img{display:block;width:100%}
 .ipa{font-size:11px;opacity:.45;margin-left:0;font-family:Helvetica,Arial,sans-serif}
 .label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--line);padding:4px 10px;border-radius:999px;margin-left:0;vertical-align:middle;font-weight:700}
 
+/* NEW - FULL WIDTH 4 IMAGE STRIP - LEFT TO RIGHT */
+.gallery-strip{width:100%;overflow:hidden;background:#111;padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.gallery-track{display:flex;width:max-content;animation:gallery-scroll 28s linear infinite}
+.gallery-track:hover{animation-play-state:paused}
+.gallery-track img{width:25vw;min-width:280px;height:420px;object-fit:cover;flex-shrink:0}
+@keyframes gallery-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
 /* DROP 002 */
 .drop-002{padding:120px 32px;background:#fff;border-bottom:1px solid var(--line);text-align:center}
 .drop-002 .eyebrow{font:600 10px sans-serif;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
@@ -89,12 +96,14 @@ img{display:block;width:100%}
 .grid{grid-template-columns:repeat(2,1fr);gap:20px}.drop-preview{padding:64px 20px}
 .drop-002{padding:80px 20px}.drop-002-grid{grid-template-columns:1fr}
 .footer .wrap{grid-template-columns:1fr;gap:32px}
+.gallery-track img{width:70vw;height:360px}
 }
 @media(max-width:560px){
 .nav{padding:18px 20px}
 .grid{grid-template-columns:1fr}
 .meaning{padding:80px 20px}
 .meaning h2{font-size:26px}
+.gallery-track img{width:85vw;height:320px}
 }
   .drop-ticker{
   width:100%;
@@ -218,6 +227,21 @@ img{display:block;width:100%}
       <div style="font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:.5;margin-bottom:6px">Creative &amp; Business Architect</div>
       <div style="font-size:13px;font-weight:700;letter-spacing:.05em">Kaylee-Jane.com</div>
     </div>
+  </div>
+</section>
+
+<!-- NEW: FULL-WIDTH 4 IMAGE CARD STRIP -->
+<section class="gallery-strip" aria-label="Crescita gallery">
+  <div class="gallery-track">
+    <img src="/Crescita/assets/strip-1.jpg" alt="Crescita 1">
+    <img src="/Crescita/assets/strip-2.jpg" alt="Crescita 2">
+    <img src="/Crescita/assets/strip-3.jpg" alt="Crescita 3">
+    <img src="/Crescita/assets/strip-4.jpg" alt="Crescita 4">
+    <!-- duplicate for seamless loop -->
+    <img src="/Crescita/assets/strip-1.jpg" alt="" aria-hidden="true">
+    <img src="/Crescita/assets/strip-2.jpg" alt="" aria-hidden="true">
+    <img src="/Crescita/assets/strip-3.jpg" alt="" aria-hidden="true">
+    <img src="/Crescita/assets/strip-4.jpg" alt="" aria-hidden="true">
   </div>
 </section>
 
