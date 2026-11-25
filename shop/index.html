@@ -20,45 +20,53 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 .marquee-track{display:flex;white-space:nowrap;animation:crescita-marquee 22s linear infinite}
 .marquee-track span{font-size:9px;letter-spacing:.18em;font-weight:500;text-transform:uppercase;padding-right:24px}
 @keyframes crescita-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.filters{display:flex;gap:24px;padding:12px 24px;overflow:auto;border-bottom:1px solid var(--line);background:#fff}
-.filters a{font-size:9px;letter-spacing:.18em;text-transform:uppercase;opacity:.5;white-space:nowrap}
 .wrap{max-width:1440px;margin:0 auto}
-.label-row{display:flex;justify-content:space-between;padding:32px 24px 12px}
-.label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800}
-.hero,.hero-flip{margin:0 24px 32px;border:1px solid #111;display:grid;background:#fff;align-items:stretch}
-.hero{grid-template-columns:1.2fr .8fr}
+/* HERO */
+.hero-intro{padding:44px 24px 24px;text-align:center}
+.hero-intro h1{font-family:'Orbitron',sans-serif;font-size:clamp(28px,4vw,48px);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em}
+.hero-intro p{margin:14px auto 0;max-width:520px;font-size:13px;line-height:1.7;opacity:.6}
+.hero{margin:24px 24px 32px;border:1px solid #111;display:grid;background:#fff;align-items:stretch;grid-template-columns:1.2fr .8fr}
 .hero-left{grid-row:1 / span 2;border-right:1px solid #111;display:flex}
 .hero-left .imgbox{height:520px;flex:1}
 .hero-right{display:grid;grid-template-rows:260px 260px}
 .hero-right .imgbox{height:260px}
 .hero-right .imgbox:first-child{border-bottom:1px solid #111}
-.hero-flip{grid-template-columns:.85fr 1.15fr}
-.hero-flip-left{border-right:1px solid #111;display:grid;grid-template-rows:260px 260px}
-.hero-flip-left .top-wide{border-bottom:1px solid #111;display:flex}
-.hero-flip-left .top-wide .imgbox{height:260px;flex:1}
-.hero-flip-left .bottom-two{display:grid;grid-template-columns:1fr 1fr}
-.hero-flip-left .bottom-two .imgbox{height:260px}
-.hero-flip-left .bottom-two .imgbox:first-child{border-right:1px solid #111}
-.hero-flip-right{display:flex}
-.hero-flip-right .imgbox{height:520px;flex:1}
 .imgbox{position:relative;background:#F4F4F4;overflow:hidden;cursor:pointer}
 .imgbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .overlay{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;z-index:2}
 .tag{background:transparent !important;border:none !important;padding:0 !important;font-size:10px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
 .tag.light{color:#111} .tag.dark{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.55)}
 .shopbtn{background:#111;color:#fff;padding:8px 12px;font-size:8px;letter-spacing:.12em;font-weight:700;border:1px solid #111}
+/* FILTERS */
+.filters{position:sticky;top:73px;z-index:40;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;padding:14px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.filters .group{display:flex;gap:8px;flex-wrap:wrap}
+.filter-btn{border:1px solid #111;background:#fff;color:#111;padding:9px 16px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;cursor:pointer;border-radius:999px}
+.filter-btn.active{background:#111;color:#fff}
+.filter-btn.dot-btn{display:flex;align-items:center;gap:7px}
+.dot{width:10px;height:10px;border-radius:50%;border:1px solid #ccc;display:inline-block}
+.dot.black{background:#111}.dot.white{background:#fff}.dot.blue{background:#3B5BFF}.dot.pink{background:#F8B8D0}
+.label-row{display:flex;justify-content:space-between;padding:32px 24px 12px}
+.label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800}
+.label-row span{font-size:10px;letter-spacing:.14em;opacity:.5;text-transform:uppercase}
+/* GRID */
 .sets-grid{margin:0 24px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.sets-grid .card .imgbox{aspect-ratio:4/5;border:1px solid var(--line)}
-.meta{display:flex;justify-content:space-between;padding:10px 0 4px}
-.name{font-size:10px;font-weight:700;text-transform:uppercase}
-.price{font-size:10px}
-.sub{font-size:9px;color:var(--muted)}
-.add{width:100%;margin-top:10px;background:#fff;border:1px solid #111;padding:11px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.sets-grid .card .imgbox{aspect-ratio:4/5;border:1px solid var(--line);background:#F4F4F4}
+.sets-grid .card .imgbox img{object-fit:contain}
+.meta{padding:12px 0 4px}
+.name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+.sub{font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.price{font-size:11px;font-weight:800}
+.dots{display:flex;gap:5px}
+.dots .dot{width:11px;height:11px}
+.dots .dot.active{outline:2px solid #111;outline-offset:2px}
+.add{width:100%;margin-top:12px;background:#111;color:#fff;border:1px solid #111;padding:13px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-weight:700}
+.add:hover{background:#fff;color:#111}
+.set-note{margin:0 24px 32px;text-align:center;font-size:11px;line-height:1.7;opacity:.6}
 .size-opt{border:1px solid #111;padding:12px;text-align:center;font-size:11px;font-weight:700;cursor:pointer}
 .size-opt.sel{background:#111;color:#fff}
-.set-note{margin:0 24px 32px;text-align:center;font-size:11px;line-height:1.7;opacity:.6}
-@media(max-width:900px){.hero,.hero-flip{grid-template-columns:1fr}.hero-left,.hero-flip-left{border-right:none;border-bottom:1px solid #111}.sets-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.sets-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:1px solid #111}.sets-grid{grid-template-columns:repeat(2,1fr)}.filters{top:72px}}
+@media(max-width:600px){.sets-grid{grid-template-columns:repeat(2,1fr);gap:12px}.hero-intro{padding:32px 20px 16px}}
 .footer{background:#fff;border-top:1px solid #EAEAEA;padding:56px 32px 28px;margin-top:80px}
 .footer .wrap{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
 .footer .brand{font-family:'Orbitron',sans-serif;font-weight:700;letter-spacing:.14em;font-size:16px;margin-bottom:12px}
@@ -113,13 +121,17 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 </div>
 
 <div class="wrap">
-<div class="label-row" id="men"><h2>MEN / 001 — TRACKSUIT SETS ONLY</h2><span></span></div>
+<div class="hero-intro">
+  <h1>DROP 001 — TRACKSUIT SETS ONLY</h1>
+  <p>4 colourways. Men's + Women's. Every set is Jacket + Pants, cut &amp; sewn in SA. R2,500 per set.</p>
+</div>
+
 <div class="hero">
 <div class="hero-left">
 <div class="imgbox dark has-verse" onclick="addC('GROWTH BLACK SET - MENS')">
   <img src="/Crescita/assets/mens-set-black.png">
   <div class="verse-popup">2 Peter 3:18 — But grow in the grace and knowledge of our Lord and Savior Jesus Christ.</div>
-  <div class="overlay"><div class="tag dark">GROWTH — R10 TEST</div><div class="shopbtn">ADD TO CART →</div></div>
+  <div class="overlay"><div class="tag dark">GROWTH — R2,500</div><div class="shopbtn">ADD TO CART →</div></div>
 </div>
 </div>
 <div class="hero-right">
@@ -128,53 +140,55 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
     <source src="/Crescita/assets/mens-white-vid.mp4" type="video/mp4">
   </video>
   <div class="overlay">
-    <div class="tag light">FAITH — R3000</div>
+    <div class="tag light">FAITH — R2,500</div>
     <div class="shopbtn">ADD TO CART →</div>
   </div>
 </div>
-<div class="imgbox light" onclick="addC('PURPOSE SET - MENS')"><img src="/Crescita/assets/mens-set-blue.png"><div class="overlay"><div class="tag light">PURPOSE — R3000</div><div class="shopbtn">ADD TO CART →</div></div></div>
+<div class="imgbox light" onclick="addC('PURPOSE SET - MENS')"><img src="/Crescita/assets/mens-set-blue.png"><div class="overlay"><div class="tag light">PURPOSE — R2,500</div><div class="shopbtn">ADD TO CART →</div></div></div>
 </div>
 </div>
 
-<div class="sets-grid">
-<div class="card"><div class="imgbox"><img src="/Crescita/assets/mens-set-pink.png"></div><div class="meta"><div><div class="name">GRACE</div><div class="sub">PINK / XS-XL — SET</div></div><div class="price">R 3,000</div></div><button class="add" onclick="addC('GRACE PINK SET - MENS')">ADD TO CART</button></div>
-<div class="card" style="opacity:.55"><div class="imgbox"><img src="/Crescita/assets/mens-set-black.png"></div><div class="meta"><div><div class="name">GROWTH</div><div class="sub">BLACK / XS-XL — SET — TEST R10</div></div><div class="price">R 10</div></div><button class="add" onclick="addC('GROWTH BLACK SET - MENS')">ADD TO CART</button></div>
-<div class="card" style="opacity:.55"><div class="imgbox"><img src="/Crescita/assets/mens-set-white.png"></div><div class="meta"><div><div class="name">FAITH</div><div class="sub">WHITE / XS-XL — SET</div></div><div class="price">R 3,000</div></div><button class="add" onclick="addC('FAITH SET - MENS')">ADD TO CART</button></div>
-<div class="card" style="opacity:.55"><div class="imgbox"><img src="/Crescita/assets/mens-set-blue.png"></div><div class="meta"><div><div class="name">PURPOSE</div><div class="sub">BLUE / XS-XL — SET</div></div><div class="price">R 3,000</div></div><button class="add" onclick="addC('PURPOSE SET - MENS')">ADD TO CART</button></div>
+<div class="filters">
+  <div class="group" id="genderFilters">
+    <button class="filter-btn active" onclick="setGender('all',this)">All</button>
+    <button class="filter-btn" onclick="setGender('mens',this)">Men</button>
+    <button class="filter-btn" onclick="setGender('womens',this)">Women</button>
+  </div>
+  <div class="group" id="colourFilters">
+    <button class="filter-btn active" onclick="setColour('all',this)">All Colours</button>
+    <button class="filter-btn dot-btn" onclick="setColour('black',this)"><span class="dot black"></span> Black</button>
+    <button class="filter-btn dot-btn" onclick="setColour('white',this)"><span class="dot white"></span> White</button>
+    <button class="filter-btn dot-btn" onclick="setColour('blue',this)"><span class="dot blue"></span> Blue</button>
+    <button class="filter-btn dot-btn" onclick="setColour('pink',this)"><span class="dot pink"></span> Pink</button>
+  </div>
 </div>
-<p class="set-note">Mens — 4 colourways. All sold as full sets: Jacket + Pants. XS–XL. R3,000 per set. Growth Black is R10 TEST only.</p>
 
-<div class="label-row" id="womens"><h2>WOM / 001 — TRACKSUIT SETS ONLY</h2><span></span></div>
-<div class="hero-flip">
-  <div class="hero-flip-left">
-    <div class="top-wide"><div class="imgbox light" onclick="addC('FAITH CREAM SET - WOMENS')"><img src="/Crescita/assets/womens-set-white.png"><div class="overlay"><div class="tag light">FAITH — R3000</div><div class="shopbtn">ADD TO CART →</div></div></div></div>
-    <div class="bottom-two">
-      <div class="imgbox dark" onclick="addC('GROWTH BLACK SET - WOMENS')"><img src="/Crescita/assets/womens-set-black.png"><div class="overlay"><div class="tag dark">GROWTH — R3000</div><div class="shopbtn">ADD TO CART →</div></div></div>
-      <div class="imgbox light" onclick="addC('PURPOSE BLUE SET - WOMENS')"><img src="/Crescita/assets/womens-set-blue.png"><div class="overlay"><div class="tag light">PURPOSE — R3000</div><div class="shopbtn">ADD TO CART →</div></div></div>
-    </div>
-  </div>
-  <div class="hero-flip-right">
-    <div class="imgbox light has-verse" onclick="addC('GRACE PINK SET - WOMENS')">
-      <video autoplay muted loop playsinline preload="metadata" poster="/Crescita/assets/womens-set-pink.png"><source src="/Crescita/assets/womens-pink-vid.mp4" type="video/mp4"></video>
-      <div class="verse-popup">2 Corinthians 12:9 — My grace is sufficient for you, for my power is made perfect in weakness.</div>
-      <div class="overlay"><div class="tag light">GRACE — R3000</div><div class="shopbtn">ADD TO CART →</div></div>
-    </div>
-  </div>
+<div class="label-row"><h2>DROP 001 — ALL SETS</h2><span id="resultCount">Showing 8 sets</span></div>
+
+<div class="sets-grid" id="productGrid">
+<!-- MENS -->
+<div class="card" data-gender="mens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/mens-set-black.png" alt="Growth Black Mens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - MENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="mens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/mens-set-white.png" alt="Faith White Mens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH SET - MENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="mens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/mens-set-blue.png" alt="Purpose Blue Mens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE SET - MENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="mens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/mens-set-pink.png" alt="Grace Pink Mens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - MENS')">ADD TO CART — R 2,500</button></div>
+<!-- WOMENS -->
+<div class="card" data-gender="womens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/womens-set-black.png" alt="Growth Black Womens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - WOMENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="womens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/womens-set-white.png" alt="Faith White Womens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH CREAM SET - WOMENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="womens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/womens-set-blue.png" alt="Purpose Blue Womens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE BLUE SET - WOMENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="womens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/womens-set-pink.png" alt="Grace Pink Womens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - WOMENS')">ADD TO CART — R 2,500</button></div>
 </div>
-<p class="set-note">Womens — 4 colourways. All sold as full sets: Jacket + Pants. XS–XL. R3,000 per set.</p>
+<p class="set-note">All sets sold as full sets: Jacket + Pants. XS–XL. R2,500 per set. Cut &amp; sewn in SA. 100 pieces — Drop 001.</p>
 
 </div>
 
 <script>
 let cart=[]; let pendingProduct=null; let pendingSize=null;
-// IKHOKHA TEST LINK - Growth Mens Black only
+let activeGender='all'; let activeColour='all';
+// IKHOKHA LINK - kept as before
 const IKHOKHA_LINKS = {
   "GROWTH BLACK SET - MENS": "https://pay.ikhokha.com/thisiskayleejane/mpr/growth-blk-mens"
 };
-function getPrice(n){
-  if(n === "GROWTH BLACK SET - MENS") return 10;
-  return 3000;
-}
+function getPrice(n){ return 2500; }
 function openSize(name){pendingProduct=name;pendingSize=null;document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));document.getElementById('modalName').innerText=name+' — R'+getPrice(name);document.getElementById('sizeModal').style.display='flex';}
 function closeSize(){document.getElementById('sizeModal').style.display='none';}
 function pickSize(el,s){document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');pendingSize=s;}
@@ -185,17 +199,29 @@ function renderCart(){document.getElementById('c').innerText=cart.length;const l
 function removeItem(i){cart.splice(i,1);renderCart();}
 function checkoutWA(){
   if(cart.length===0){alert('Your cart is empty');return;}
-  // TEST: If cart is ONLY Growth Mens Black, go to iKhokha
   if(cart.length===1 && cart[0].name==="GROWTH BLACK SET - MENS"){
     window.open(IKHOKHA_LINKS["GROWTH BLACK SET - MENS"],"_blank");
     return;
   }
-  // Everything else = WhatsApp as before
   let m="Hi CRESCITA - DROP 001 ORDER%0A%0A";
   cart.forEach((it,i)=>{m+=`${i+1}. ${it.name} - Size: ${it.size} - R${it.price}%0A`;});
   let t=cart.reduce((s,it)=>s+it.price,0);
   m+=`%0ATOTAL: R${t}%0A%0AShipping details to follow.`;
   window.open(`https://wa.me/27646554337?text=${m}`,"_blank");
+}
+// FILTERS
+function setGender(g,btn){activeGender=g;document.querySelectorAll('#genderFilters .filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyFilters();}
+function setColour(c,btn){activeColour=c;document.querySelectorAll('#colourFilters .filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyFilters();}
+function applyFilters(){
+  let shown=0;
+  document.querySelectorAll('#productGrid .card').forEach(card=>{
+    const okG = activeGender==='all' || card.dataset.gender===activeGender;
+    const okC = activeColour==='all' || card.dataset.colour===activeColour;
+    const show = okG && okC;
+    card.style.display = show ? '' : 'none';
+    if(show) shown++;
+  });
+  document.getElementById('resultCount').innerText = 'Showing '+shown+' set'+(shown!==1?'s':'');
 }
 </script>
 
@@ -209,7 +235,7 @@ function checkoutWA(){
       <h4>Shop</h4>
       <a href="/Crescita/shop/">Drop 001 — 100 pieces</a>
       <a href="/Crescita/shop/">68 Remaining</a>
-      <a href="/Crescita/shop/">Cut & sewn in SA</a>
+      <a href="/Crescita/shop/">Cut &amp; sewn in SA</a>
       <a href="mailto:hello@crescitaofficial.com">hello@crescitaofficial.com</a>
     </div>
     <div>
@@ -225,12 +251,12 @@ function checkoutWA(){
   <div class="policies-row">
     <a href="/Crescita/faqs/">FAQs</a>
     <a href="/Crescita/shipping-policy/">Shipping</a>
-    <a href="/Crescita/return-policy/">Returns & Exchanges</a>
+    <a href="/Crescita/return-policy/">Returns &amp; Exchanges</a>
     <a href="/Crescita/privacy-policy/">Privacy Policy</a>
     <a href="/Crescita/terms-service/">Terms of Service</a>
 </div>
   <div class="bottom small">
-    <div>© 2026 CRESCITA. All rights reserved. Brand Strategy, Design & Digital by KINGLIS.</div>
+    <div>© 2026 CRESCITA. All rights reserved. Brand Strategy, Design &amp; Digital by KINGLIS.</div>
     <div><a href="https://thisiskinglis.com" target="_blank">thisiskinglis.com</a></div>
   </div>
 </footer>
