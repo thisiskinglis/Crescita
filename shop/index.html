@@ -11,7 +11,6 @@
 html,body{background:#fff}
 body{color:#111;font-family:Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-/* FIX 1: cover everywhere, no contain */
 img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:center 20%}
 .top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .top-main{display:flex;justify-content:space-between;align-items:center;padding:18px 24px}
@@ -25,7 +24,6 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 .hero-intro{padding:44px 24px 24px;text-align:center}
 .hero-intro h1{font-family:'Orbitron',sans-serif;font-size:clamp(28px,4vw,48px);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em}
 .hero-intro p{margin:14px auto 0;max-width:520px;font-size:13px;line-height:1.7;opacity:.6}
-/* FIX 2: Hero = 3 equal portrait boxes, same shape as your photos */
 .hero{margin:24px 24px 32px;border:1px solid #111;display:grid;background:#fff;grid-template-columns:repeat(3,1fr)}
 .hero .imgbox{aspect-ratio:3/4;background:#F4F4F4;border-right:1px solid #111}
 .hero .imgbox:last-child{border-right:none}
@@ -46,7 +44,6 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 .label-row{display:flex;justify-content:space-between;padding:32px 24px 12px}
 .label-row h2{font-size:10px;letter-spacing:.22em;font-weight:800}
 .label-row span{font-size:10px;letter-spacing:.14em;opacity:.5;text-transform:uppercase}
-/* FIX 3: Grid = 3/4 cover, fills box, no white gaps */
 .sets-grid{margin:0 24px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .sets-grid .card .imgbox{aspect-ratio:3/4;border:1px solid var(--line);background:#F4F4F4;overflow:hidden}
 .sets-grid .card .imgbox img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
@@ -132,17 +129,17 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
   <div class="imgbox dark has-verse" onclick="addC('GROWTH BLACK SET - MENS')">
     <img src="/Crescita/assets/set-black-wmn.png" alt="Growth Black">
     <div class="verse-popup">2 Peter 3:18 — But grow in the grace and knowledge of our Lord and Savior Jesus Christ.</div>
-    <div class="overlay"><div class="tag dark">GROWTH — R2,500</div><div class="shopbtn">ADD TO CART →</div></div>
+    <div class="overlay"><div class="tag dark">GROWTH — <s style="opacity:.6">R2,500</s> R2,000</div><div class="shopbtn">ADD TO CART →</div></div>
   </div>
   <div class="imgbox light" onclick="addC('FAITH SET - MENS')">
     <video autoplay muted loop playsinline preload="metadata" poster="/Crescita/assets/mens-set-white.png">
       <source src="/Crescita/assets/mens-white-vid.mp4" type="video/mp4">
     </video>
-    <div class="overlay"><div class="tag light">FAITH — R2,500</div><div class="shopbtn">ADD TO CART →</div></div>
+    <div class="overlay"><div class="tag light">FAITH — <s style="opacity:.6">R2,500</s> R2,000</div><div class="shopbtn">ADD TO CART →</div></div>
   </div>
   <div class="imgbox light" onclick="addC('PURPOSE SET - MENS')">
     <img src="/Crescita/assets/mens-set-purpose.png" alt="Purpose Blue">
-    <div class="overlay"><div class="tag light">PURPOSE — R2,500</div><div class="shopbtn">ADD TO CART →</div></div>
+    <div class="overlay"><div class="tag light">PURPOSE — <s style="opacity:.6">R2,500</s> R2,000</div><div class="shopbtn">ADD TO CART →</div></div>
   </div>
 </div>
 
@@ -164,16 +161,16 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 <div class="label-row"><h2>DROP 001 — ALL SETS</h2><span id="resultCount">Showing 8 sets</span></div>
 
 <div class="sets-grid" id="productGrid">
-<div class="card" data-gender="mens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/mens-set-black.png" alt="Growth Black Mens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - MENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="mens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/mens-set-white.png" alt="Faith White Mens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH SET - MENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="mens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/mens-set-blue.png" alt="Purpose Blue Mens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE SET - MENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="mens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/mens-set-pink.png" alt="Grace Pink Mens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - MENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="womens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/womens-set-black.png" alt="Growth Black Womens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - WOMENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="womens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/womens-set-white.png" alt="Faith White Womens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH CREAM SET - WOMENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="womens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/womens-set-blue.png" alt="Purpose Blue Womens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE BLUE SET - WOMENS')">ADD TO CART — R 2,500</button></div>
-<div class="card" data-gender="womens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/womens-set-pink.png" alt="Grace Pink Womens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price">R 2,500</div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - WOMENS')">ADD TO CART — R 2,500</button></div>
+<div class="card" data-gender="mens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/mens-set-black.png" alt="Growth Black Mens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - MENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="mens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/mens-set-white.png" alt="Faith White Mens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH SET - MENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="mens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/mens-set-blue.png" alt="Purpose Blue Mens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE SET - MENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="mens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/mens-set-pink.png" alt="Grace Pink Mens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - MENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="womens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/womens-set-black.png" alt="Growth Black Womens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - WOMENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="womens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/womens-set-white.png" alt="Faith White Womens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH CREAM SET - WOMENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="womens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/womens-set-blue.png" alt="Purpose Blue Womens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE BLUE SET - WOMENS')">ADD TO CART — R 2,000</button></div>
+<div class="card" data-gender="womens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/womens-set-pink.png" alt="Grace Pink Womens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - WOMENS')">ADD TO CART — R 2,000</button></div>
 </div>
-<p class="set-note">All sets sold as full sets: Jacket + Pants. XS–XL. R2,500 per set. Cut &amp; sewn in SA. 100 pieces — Drop 001.</p>
+<p class="set-note">All sets sold as full sets: Jacket + Pants. XS–XL. <s style="opacity:.5">R2,500</s> <strong>R2,000 per set</strong> — 20% late-release discount applied. Cut &amp; sewn in SA. 100 pieces — Drop 001.</p>
 </div>
 
 <script>
@@ -182,7 +179,7 @@ let activeGender='all'; let activeColour='all';
 const IKHOKHA_LINKS = {
   "GROWTH BLACK SET - MENS": "https://pay.ikhokha.com/thisiskayleejane/mpr/growth-blk-mens"
 };
-function getPrice(n){ return 2500; }
+function getPrice(n){ return 2000; }
 function openSize(name){pendingProduct=name;pendingSize=null;document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));document.getElementById('modalName').innerText=name+' — R'+getPrice(name);document.getElementById('sizeModal').style.display='flex';}
 function closeSize(){document.getElementById('sizeModal').style.display='none';}
 function pickSize(el,s){document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');pendingSize=s;}
