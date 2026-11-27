@@ -103,6 +103,19 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 .has-verse:hover .verse-popup{opacity:1;transform:translate(-50%,-50%) translateY(0)}
 .has-verse:hover img{filter:brightness(.85)}
 .has-verse:hover img,.has-verse:hover video{filter:brightness(.75)}
+/* --- GALLERY - 3 images per card --- */
+.sets-grid .card .imgbox.gallery{cursor:default}
+.gallery-imgs{position:absolute;inset:0}
+.gallery-imgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;opacity:0;transition:opacity .35s ease;transform:none !important}
+.gallery-imgs img.active{opacity:1}
+.g-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:34px;height:34px;border-radius:50%;border:1px solid #111;background:rgba(255,255,255,.95);color:#111;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding-bottom:2px}
+.g-arrow.prev{left:10px}
+.g-arrow.next{right:10px}
+.g-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:6px;background:rgba(255,255,255,.85);padding:5px 8px;border-radius:999px}
+.g-dots span{width:7px;height:7px;border-radius:50%;background:#ccc;cursor:pointer;border:none}
+.g-dots span.active{background:#111}
+/* stop the zoom on gallery cards so arrows stay still */
+.sets-grid .card .imgbox.gallery:hover img{transform:none}
 </style>
 </head>
 <body>
@@ -185,11 +198,37 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
 <div class="label-row"><h2>DROP 001 — ALL SETS</h2><span id="resultCount">Showing 8 sets</span></div>
 
 <div class="sets-grid" id="productGrid">
-<div class="card" data-gender="mens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/mens-set-black.png" alt="Growth Black Mens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - MENS')">ADD TO CART — R 2,000</button></div>
+<div class="imgbox gallery" data-current="0">
+  <div class="gallery-imgs">
+    <img src="/Crescita/assets/mens-set-black.png" alt="Growth Black Mens - 1" class="active">
+    <img src="/Crescita/assets/mens-set-black-2.png" alt="Growth Black Mens - 2">
+    <img src="/Crescita/assets/mens-set-black-3.png" alt="Growth Black Mens - 3">
+  </div>
+  <button class="g-arrow prev" onclick="event.stopPropagation(); galleryPrev(this)">‹</button>
+  <button class="g-arrow next" onclick="event.stopPropagation(); galleryNext(this)">›</button>
+  <div class="g-dots">
+    <span class="active" onclick="event.stopPropagation(); galleryGo(this,0)"></span>
+    <span onclick="event.stopPropagation(); galleryGo(this,1)"></span>
+    <span onclick="event.stopPropagation(); galleryGo(this,2)"></span>
+  </div>
+</div>
 <div class="card" data-gender="mens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/mens-set-white.png" alt="Faith White Mens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH SET - MENS')">ADD TO CART — R 2,000</button></div>
 <div class="card" data-gender="mens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/mens-set-blue.png" alt="Purpose Blue Mens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE SET - MENS')">ADD TO CART — R 2,000</button></div>
 <div class="card" data-gender="mens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/mens-set-pink.png" alt="Grace Pink Mens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Men's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - MENS')">ADD TO CART — R 2,000</button></div>
-<div class="card" data-gender="womens" data-colour="black"><div class="imgbox"><img src="/Crescita/assets/womens-set-black.png" alt="Growth Black Womens"></div><div class="meta"><div class="name">GROWTH — BLACK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black active"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('GROWTH BLACK SET - WOMENS')">ADD TO CART — R 2,000</button></div>
+<div<div class="imgbox gallery" data-current="0">
+  <div class="gallery-imgs">
+    <img src="/Crescita/assets/womens-set-black.png" alt="Growth Black Womens - 1" class="active">
+    <img src="/Crescita/assets/womens-set-black-2.png" alt="Growth Black Womens - 2">
+    <img src="/Crescita/assets/womens-set-black-3.png" alt="Growth Black Womens - 3">
+  </div>
+  <button class="g-arrow prev" onclick="event.stopPropagation(); galleryPrev(this)">‹</button>
+  <button class="g-arrow next" onclick="event.stopPropagation(); galleryNext(this)">›</button>
+  <div class="g-dots">
+    <span class="active" onclick="event.stopPropagation(); galleryGo(this,0)"></span>
+    <span onclick="event.stopPropagation(); galleryGo(this,1)"></span>
+    <span onclick="event.stopPropagation(); galleryGo(this,2)"></span>
+  </div>
+</div>
 <div class="card" data-gender="womens" data-colour="white"><div class="imgbox"><img src="/Crescita/assets/womens-set-white.png" alt="Faith White Womens"></div><div class="meta"><div class="name">FAITH — WHITE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white active"></span><span class="dot blue"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('FAITH CREAM SET - WOMENS')">ADD TO CART — R 2,000</button></div>
 <div class="card" data-gender="womens" data-colour="blue"><div class="imgbox"><img src="/Crescita/assets/womens-set-blue.png" alt="Purpose Blue Womens"></div><div class="meta"><div class="name">PURPOSE — BLUE</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue active"></span><span class="dot pink"></span></div></div></div><button class="add" onclick="addC('PURPOSE BLUE SET - WOMENS')">ADD TO CART — R 2,000</button></div>
 <div class="card" data-gender="womens" data-colour="pink"><div class="imgbox"><img src="/Crescita/assets/womens-set-pink.png" alt="Grace Pink Womens"></div><div class="meta"><div class="name">GRACE — PINK</div><div class="sub">Women's Tracksuit Set • XS–XL</div><div class="price-row"><div class="price"><s style="opacity:.5;font-weight:400">R 2,500</s> R 2,000 <span style="background:#111;color:#fff;padding:3px 6px;font-size:8px;letter-spacing:.1em;margin-left:6px">-20%</span></div><div class="dots"><span class="dot black"></span><span class="dot white"></span><span class="dot blue"></span><span class="dot pink active"></span></div></div></div><button class="add" onclick="addC('GRACE PINK SET - WOMENS')">ADD TO CART — R 2,000</button></div>
@@ -218,6 +257,27 @@ img,video{display:block;width:100%;height:100%;object-fit:cover;object-position:
     </div>
   </div>
 </div>
+
+function galleryShow(gallery, index){
+  const imgs = gallery.querySelectorAll('.gallery-imgs img');
+  const dots = gallery.querySelectorAll('.g-dots span');
+  index = (index + imgs.length) % imgs.length;
+  imgs.forEach((im,i)=> im.classList.toggle('active', i===index));
+  dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+  gallery.dataset.current = index;
+}
+function galleryNext(btn){
+  const g = btn.closest('.gallery');
+  galleryShow(g, parseInt(g.dataset.current||0)+1);
+}
+function galleryPrev(btn){
+  const g = btn.closest('.gallery');
+  galleryShow(g, parseInt(g.dataset.current||0)-1);
+}
+function galleryGo(dot, index){
+  const g = dot.closest('.gallery');
+  galleryShow(g, index);
+}
   
 <script>
 let cart=[]; let pendingProduct=null; let pendingSize=null;
